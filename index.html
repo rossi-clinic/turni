@@ -1,0 +1,1807 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Turni Rossi Clinic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Inter:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#FAF8F5;
+  --surface:#FFFDFA;
+  --surface-2:#F1ECE7;
+  --line:#E6DFD6;
+  --line-2:#D9D2C9;
+  --ink:#1F1D1B;
+  --ink-2:#6E6862;
+  --ink-3:#98918A;
+  --gold:#C0A35F;
+  --gold-deep:#8F7842;
+  --gold-wash:rgba(192,163,95,.13);
+  --ok:#56795F;
+  --ok-wash:rgba(86,121,95,.12);
+  --wait:#8A7E6E;
+  --wait-wash:rgba(138,126,110,.10);
+  --no:#97463C;
+  --no-wash:rgba(151,70,60,.10);
+  --shadow:0 1px 2px rgba(31,29,27,.05), 0 8px 24px -16px rgba(31,29,27,.25);
+  --display:"Jost","Futura","Avenir Next",system-ui,sans-serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#151412;
+    --surface:#1F1D1B;
+    --surface-2:#272320;
+    --line:#332E29;
+    --line-2:#413A33;
+    --ink:#F1ECE7;
+    --ink-2:#A9A199;
+    --ink-3:#7D766F;
+    --gold:#C9AF6D;
+    --gold-deep:#E0C98E;
+    --gold-wash:rgba(201,175,109,.14);
+    --ok:#8CB396;
+    --ok-wash:rgba(140,179,150,.14);
+    --wait:#A2978A;
+    --wait-wash:rgba(162,151,138,.12);
+    --no:#D08379;
+    --no-wash:rgba(208,131,121,.14);
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#151412;
+  --surface:#1F1D1B;
+  --surface-2:#272320;
+  --line:#332E29;
+  --line-2:#413A33;
+  --ink:#F1ECE7;
+  --ink-2:#A9A199;
+  --ink-3:#7D766F;
+  --gold:#C9AF6D;
+  --gold-deep:#E0C98E;
+  --gold-wash:rgba(201,175,109,.14);
+  --ok:#8CB396;
+  --ok-wash:rgba(140,179,150,.14);
+  --wait:#A2978A;
+  --wait-wash:rgba(162,151,138,.12);
+  --no:#D08379;
+  --no-wash:rgba(208,131,121,.14);
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--body);font-size:15px;line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:var(--display);font-weight:400;margin:0;text-wrap:balance}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--gold-deep)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---------- intestazione ---------- */
+.top{
+  background:var(--bg);
+  border-bottom:1px solid var(--line);
+}
+.top-in{
+  max-width:1180px;margin:0 auto;padding:14px 20px;
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+}
+.mark{display:flex;align-items:center;gap:16px;min-width:0}
+svg.logo{display:block;width:158px;height:auto;flex:none}
+.mark-txt{border-left:1px solid var(--line-2);padding-left:16px}
+@media (max-width:620px){
+  svg.logo{width:150px}
+  .mark-txt{border-left:0;padding-left:0;flex-basis:100%}
+}
+.mark-sub{
+  font-family:var(--display);font-size:10.5px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ink-3);white-space:nowrap;
+}
+.who{margin-left:auto;display:flex;align-items:center;gap:8px}
+.who label{
+  font-family:var(--display);font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-3);
+}
+select.role{
+  appearance:none;background:var(--surface);border:1px solid var(--line-2);
+  border-radius:999px;padding:7px 30px 7px 13px;font-size:13.5px;font-weight:500;
+  background-image:linear-gradient(45deg,transparent 50%,var(--ink-2) 50%),linear-gradient(135deg,var(--ink-2) 50%,transparent 50%);
+  background-position:calc(100% - 15px) 52%, calc(100% - 10px) 52%;
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat;cursor:pointer;
+}
+.blades{display:block;width:100%;height:10px;opacity:.75}
+
+/* ---------- identità ---------- */
+.utente{display:flex;align-items:center;gap:10px}
+.utente .nome{font-size:13.5px;font-weight:500;line-height:1.2}
+.utente .ruolo{font-family:var(--display);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+.utente .tondo{
+  width:34px;height:34px;border-radius:50%;flex:none;display:grid;place-items:center;
+  background:var(--gold-wash);border:1px solid color-mix(in srgb,var(--gold) 45%,transparent);
+  font-family:var(--display);font-size:14px;color:var(--gold-deep);
+}
+.utente .tondo.super{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+
+/* ---------- schermata di accesso ---------- */
+.accesso{max-width:1180px;margin:0 auto;padding:48px 20px 80px;display:flex;justify-content:center}
+.accesso-box{width:100%;max-width:392px}
+.accesso-box h1{font-size:22px;font-weight:300;margin-bottom:4px}
+.accesso-box .intro{color:var(--ink-2);font-size:13.5px;margin:0 0 22px}
+.accesso-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:20px}
+.errore{
+  background:var(--no-wash);color:var(--no);border:1px solid color-mix(in srgb,var(--no) 30%,transparent);
+  border-radius:7px;padding:9px 12px;font-size:13px;margin-bottom:14px;
+}
+.regola{font-size:12.5px;color:var(--ink-3);margin:-6px 0 14px}
+.accesso-nota{margin-top:18px;font-size:12.5px;color:var(--ink-3);line-height:1.55}
+.accesso-nota strong{color:var(--ink-2);font-weight:500}
+.scadenza{font-size:12px;color:var(--ink-3)}
+.scadenza.vicina{color:var(--no)}
+
+/* ---------- navigazione ---------- */
+nav.tabs{
+  position:sticky;top:0;z-index:40;
+  border-bottom:1px solid var(--line);
+  background:var(--surface);
+}
+.tabs-in{
+  max-width:1180px;margin:0 auto;padding:0 12px;
+  display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;
+}
+.tabs-in::-webkit-scrollbar{display:none}
+.tab{
+  background:none;border:0;border-bottom:2px solid transparent;
+  padding:12px 12px 10px;cursor:pointer;white-space:nowrap;
+  font-family:var(--display);font-size:13px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-2);
+}
+.tab:hover{color:var(--ink)}
+.tab[aria-current="true"]{color:var(--ink);border-bottom-color:var(--gold)}
+.tab .dot{
+  display:inline-block;min-width:17px;padding:0 5px;margin-left:6px;
+  background:var(--gold);color:#1F1D1B;border-radius:999px;
+  font-family:var(--body);font-size:11px;font-weight:600;line-height:17px;
+  text-align:center;letter-spacing:0;
+}
+
+/* ---------- impianto ---------- */
+main{max-width:1180px;margin:0 auto;padding-block:24px 72px;padding-left:20px;padding-right:20px}
+.sect-head{display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+.sect-head h2{font-size:24px;letter-spacing:.01em;font-weight:300}
+.sect-head p{margin:0;color:var(--ink-2);font-size:13.5px;max-width:62ch}
+.ground{height:1px;background:var(--gold);opacity:.55;margin:0 0 20px}
+.eyebrow{
+  font-family:var(--display);font-size:10.5px;letter-spacing:.19em;
+  text-transform:uppercase;color:var(--ink-3);
+}
+.stack{display:flex;flex-direction:column;gap:18px}
+.cols{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:880px){.cols{grid-template-columns:1fr}}
+
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.panel > h3{
+  font-size:13px;font-family:var(--display);letter-spacing:.15em;text-transform:uppercase;
+  padding:14px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+}
+.panel > h3 .r{margin-left:auto;font-family:var(--body);font-size:12.5px;letter-spacing:0;text-transform:none;color:var(--ink-2)}
+.pad{padding:16px}
+
+/* ---------- tessere numeriche ---------- */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:1px;background:var(--line)}
+.tile{background:var(--surface);padding:15px 16px 16px}
+.tile .k{font-family:var(--display);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+.tile .v{font-size:27px;font-family:var(--display);font-weight:300;font-variant-numeric:tabular-nums;line-height:1.25;margin-top:4px}
+.tile .v small{font-size:14px;color:var(--ink-2)}
+.tile .n{font-size:12.5px;color:var(--ink-2);margin-top:2px}
+.tile .n.pos{color:var(--ok)} .tile .n.neg{color:var(--no)}
+
+/* ---------- giorni ---------- */
+.days{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:10px}
+.day{
+  border:1px solid var(--line);border-radius:8px;padding:11px 12px 12px;
+  background:var(--surface);display:flex;flex-direction:column;gap:7px;min-height:104px;
+}
+.day.oggi{border-color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold-wash)}
+.day .dh{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.day .dn{font-family:var(--display);font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-2)}
+.day .dd{font-size:12.5px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.day .orario{font-size:16px;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.day .vuoto{font-size:13px;color:var(--ink-3);font-style:italic}
+
+.chip{
+  display:inline-flex;align-items:center;gap:6px;align-self:flex-start;
+  padding:2px 9px;border-radius:999px;font-size:11.5px;font-weight:500;
+  border:1px solid transparent;white-space:nowrap;
+}
+.chip::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor}
+.c-M{color:var(--gold-deep);background:var(--gold-wash);border-color:var(--gold-wash)}
+.c-P{color:var(--ink-2);background:var(--surface-2);border-color:var(--line)}
+.c-S{color:var(--ok);background:var(--ok-wash);border-color:var(--ok-wash)}
+.c-SW{color:var(--ink-2);background:transparent;border-color:var(--ink-3);border-style:dashed}
+.c-R{color:var(--ink-3);background:transparent;border-color:var(--line)}
+.c-F{color:var(--no);background:var(--no-wash);border-color:var(--no-wash)}
+.c-PR{color:var(--wait);background:var(--wait-wash);border-color:var(--wait-wash)}
+.st{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:11.5px;font-weight:500}
+.st::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor}
+.st-attesa{color:var(--wait);background:var(--wait-wash)}
+.st-ok{color:var(--ok);background:var(--ok-wash)}
+.st-no{color:var(--no);background:var(--no-wash)}
+.st-bozza{color:var(--ink-2);background:var(--surface-2)}
+.st-revisione{color:var(--gold-deep);background:var(--gold-wash)}
+
+/* ---------- griglia settimanale ---------- */
+.gridwrap{overflow-x:auto;border-top:1px solid var(--line)}
+table.griglia{border-collapse:collapse;width:100%;min-width:820px}
+table.griglia th,table.griglia td{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:0;vertical-align:top}
+table.griglia th:last-child,table.griglia td:last-child{border-right:0}
+table.griglia thead th{
+  background:var(--surface-2);padding:9px 10px;text-align:left;
+  font-family:var(--display);font-weight:400;font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-2);
+  position:sticky;top:0;z-index:2;
+}
+table.griglia thead th span{display:block;font-family:var(--body);letter-spacing:0;text-transform:none;font-size:12px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+th.persona,td.persona{
+  position:sticky;left:0;z-index:3;background:var(--surface);
+  min-width:158px;border-right:1px solid var(--line-2);
+}
+thead th.persona{z-index:4;background:var(--surface-2)}
+td.persona{padding:10px 12px}
+td.persona .nm{font-weight:500}
+td.persona .ms{font-size:12px;color:var(--ink-3)}
+td.persona .tot{font-size:12px;color:var(--ink-2);font-variant-numeric:tabular-nums;margin-top:3px}
+.cella{width:100%;min-height:58px;border:0;background:none;padding:8px;text-align:left;display:flex;flex-direction:column;gap:4px;cursor:default}
+button.cella{cursor:pointer}
+button.cella:hover{background:var(--gold-wash)}
+.cella .hh{font-size:12.5px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.cella .add{color:var(--ink-3);font-size:18px;line-height:1;opacity:0;font-family:var(--display)}
+button.cella:hover .add{opacity:1}
+.col-oggi{background:var(--gold-wash)}
+
+/* ---------- righe elenco ---------- */
+.riga{display:flex;gap:13px;padding:13px 16px;border-bottom:1px solid var(--line);align-items:flex-start;flex-wrap:wrap}
+.riga:last-child{border-bottom:0}
+.riga .main{flex:1 1 260px;min-width:0}
+.riga .tt{font-weight:500}
+.riga .sub{font-size:13px;color:var(--ink-2);margin-top:2px}
+.riga .note{font-size:13px;color:var(--ink-2);margin-top:6px;padding-left:11px;border-left:2px solid var(--line-2);font-style:italic}
+.riga .az{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+
+/* ---------- comandi ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  padding:9px 16px;border-radius:999px;border:1px solid var(--line-2);
+  background:var(--surface);color:var(--ink);cursor:pointer;
+  font-family:var(--display);font-size:13px;letter-spacing:.05em;
+  transition:background .15s,border-color .15s;
+}
+.btn:hover{border-color:var(--ink-3)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:#211E19;font-weight:500}
+.btn.gold:hover{background:var(--gold-deep);border-color:var(--gold-deep);color:#FFF9EC}
+.btn.ok{color:var(--ok);border-color:var(--ok)}
+.btn.ok:hover{background:var(--ok-wash)}
+.btn.no{color:var(--no);border-color:var(--no)}
+.btn.no:hover{background:var(--no-wash)}
+.btn.sm{padding:6px 12px;font-size:12px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btnrow{display:flex;gap:9px;flex-wrap:wrap}
+
+/* ---------- moduli ---------- */
+.campo{display:flex;flex-direction:column;gap:5px;margin-bottom:13px}
+.campo > span{font-family:var(--display);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.campo input,.campo select,.campo textarea{
+  background:var(--bg);border:1px solid var(--line-2);border-radius:7px;padding:9px 11px;width:100%;
+}
+.campo textarea{min-height:64px;resize:vertical}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:520px){.duo{grid-template-columns:1fr}}
+
+/* ---------- grafico ore ---------- */
+.chart{display:flex;align-items:flex-end;gap:9px;height:184px;padding:26px 4px 0;position:relative;overflow-x:auto}
+.target{
+  position:absolute;left:0;right:0;border-top:1px dashed var(--gold);opacity:.75;
+}
+.target span{
+  position:absolute;right:0;top:-9px;background:var(--surface);padding:0 5px;
+  font-size:11px;color:var(--gold-deep);font-variant-numeric:tabular-nums;
+}
+.bar{flex:1 1 0;min-width:30px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:5px;height:100%}
+.bar .fill{width:100%;background:var(--surface-2);border:1px solid var(--line-2);border-bottom:0;border-radius:3px 3px 0 0;position:relative}
+.bar.cur .fill{background:var(--gold-wash);border-color:var(--gold)}
+.bar .val{font-size:11.5px;font-variant-numeric:tabular-nums;color:var(--ink-2);position:absolute;top:-17px;left:0;right:0;text-align:center}
+.bar .lab{font-size:11px;color:var(--ink-3);white-space:nowrap}
+.axis{border-top:1px solid var(--line-2);margin-top:-1px}
+
+table.dati{width:100%;border-collapse:collapse}
+table.dati th,table.dati td{padding:9px 16px;text-align:left;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+table.dati th{font-family:var(--display);font-weight:400;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3)}
+table.dati td.num,table.dati th.num{text-align:right}
+table.dati tr:last-child td{border-bottom:0}
+
+/* ---------- finestra ---------- */
+.velo{position:fixed;inset:0;background:rgba(31,29,27,.45);display:flex;align-items:flex-end;justify-content:center;z-index:60;padding:0}
+@media (min-width:600px){.velo{align-items:center;padding:20px}}
+.modale{
+  background:var(--surface);width:100%;max-width:460px;max-height:92vh;overflow:auto;
+  border:1px solid var(--line);border-radius:14px 14px 0 0;box-shadow:0 24px 60px -20px rgba(0,0,0,.5);
+}
+@media (min-width:600px){.modale{border-radius:14px}}
+.modale h3{padding:16px;border-bottom:1px solid var(--line);font-size:17px;display:flex;gap:12px;align-items:center}
+.modale h3 button{margin-left:auto;background:none;border:0;font-size:22px;line-height:1;color:var(--ink-3);cursor:pointer;padding:0 4px}
+.modale .corpo{padding:16px}
+.modale .piede{padding:14px 16px;border-top:1px solid var(--line);display:flex;gap:9px;justify-content:flex-end;flex-wrap:wrap}
+
+.avviso{
+  display:flex;gap:11px;align-items:flex-start;padding:12px 14px;border-radius:8px;
+  background:var(--gold-wash);border:1px solid color-mix(in srgb,var(--gold) 35%,transparent);font-size:13.5px;
+}
+.avviso .eyebrow{margin-bottom:2px}
+.vuoto-box{padding:26px 16px;text-align:center;color:var(--ink-3);font-size:13.5px}
+.toast{
+  position:fixed;left:50%;transform:translateX(-50%);bottom:22px;z-index:80;
+  background:var(--ink);color:var(--bg);padding:11px 18px;border-radius:999px;font-size:13.5px;
+  box-shadow:0 12px 30px -12px rgba(0,0,0,.6);
+}
+.legenda{display:flex;gap:8px;flex-wrap:wrap;padding:12px 16px;border-top:1px solid var(--line)}
+.mini{font-size:12.5px;color:var(--ink-2)}
+.pill-mans{
+  background:none;border:1px dashed var(--line-2);border-radius:999px;padding:2px 9px;
+  font-size:12px;color:var(--ink-3);cursor:pointer;
+}
+.pill-mans:hover{border-color:var(--gold);color:var(--gold-deep)}
+.piede-pag{
+  max-width:1180px;margin:0 auto;padding:22px 20px 40px;color:var(--ink-3);font-size:12.5px;
+  border-top:1px solid var(--line);display:flex;gap:14px;flex-wrap:wrap;justify-content:space-between;
+}
+</style>
+
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <div class="mark">
+      <svg class="logo" viewBox="76 112 741 137" role="img" aria-label="Rossi Clinic"><g transform="translate(80,80)"><g transform="translate(-151.90,-21.65) scale(0.62)"><line x1="525.00" y1="93" x2="525.00" y2="301.0" stroke="#C0A35F" stroke-width="2.8" stroke-opacity="1.0"/><line x1="675.00" y1="93" x2="675.00" y2="301.0" stroke="#C0A35F" stroke-width="2.8" stroke-opacity="1.0"/><line x1="500.25" y1="99" x2="500.25" y2="301.0" stroke="#C0A35F" stroke-width="2.8" stroke-opacity="0.97"/><line x1="699.75" y1="99" x2="699.75" y2="301.0" stroke="#C0A35F" stroke-width="2.8" stroke-opacity="0.97"/><line x1="475.50" y1="107" x2="475.50" y2="301.0" stroke="#C0A35F" stroke-width="2.8" stroke-opacity="0.94"/><line x1="724.50" y1="107" x2="724.50" y2="301.0" stroke="#C0A35F" stroke-width="2.8" stroke-opacity="0.94"/><line x1="450.75" y1="116" x2="450.75" y2="301.0" stroke="#C0A35F" stroke-width="2.8" stroke-opacity="0.91"/><line x1="749.25" y1="116" x2="749.25" y2="301.0" stroke="#C0A35F" stroke-width="2.8" stroke-opacity="0.91"/><line x1="426.00" y1="125" x2="426.00" y2="301.0" stroke="#C0A35F" stroke-width="2.8" stroke-opacity="0.88"/><line x1="774.00" y1="125" x2="774.00" y2="301.0" stroke="#C0A35F" stroke-width="2.8" stroke-opacity="0.88"/><line x1="401.25" y1="136" x2="401.25" y2="301.0" stroke="#C0A35F" stroke-width="2.8" stroke-opacity="0.85"/><line x1="798.75" y1="136" x2="798.75" y2="301.0" stroke="#C0A35F" stroke-width="2.8" stroke-opacity="0.85"/><line x1="376.50" y1="146" x2="376.50" y2="301.0" stroke="#C0A35F" stroke-width="2.8" stroke-opacity="0.82"/><line x1="823.50" y1="146" x2="823.50" y2="301.0" stroke="#C0A35F" stroke-width="2.8" stroke-opacity="0.82"/><line x1="351.75" y1="157" x2="351.75" y2="301.0" stroke="#C0A35F" stroke-width="2.8" stroke-opacity="0.79"/><line x1="848.25" y1="157" x2="848.25" y2="301.0" stroke="#C0A35F" stroke-width="2.8" stroke-opacity="0.79"/><line x1="327.00" y1="168" x2="327.00" y2="301.0" stroke="#C0A35F" stroke-width="2.8" stroke-opacity="0.76"/><line x1="873.00" y1="168" x2="873.00" y2="301.0" stroke="#C0A35F" stroke-width="2.8" stroke-opacity="0.76"/><line x1="302.25" y1="177" x2="302.25" y2="301.0" stroke="#C0A35F" stroke-width="2.8" stroke-opacity="0.73"/><line x1="897.75" y1="177" x2="897.75" y2="301.0" stroke="#C0A35F" stroke-width="2.8" stroke-opacity="0.73"/><line x1="277.50" y1="184" x2="277.50" y2="301.0" stroke="#C0A35F" stroke-width="2.8" stroke-opacity="0.7"/><line x1="922.50" y1="184" x2="922.50" y2="301.0" stroke="#C0A35F" stroke-width="2.8" stroke-opacity="0.7"/><rect x="558.90" y="127.0" width="82.2" height="153.4" fill="none" stroke="#C0A35F" stroke-width="2.8"/><line x1="623.02" y1="179.16" x2="623.02" y2="261.99" stroke="#C0A35F" stroke-width="1.79"/><line x1="245.00" y1="301.0" x2="955.00" y2="301.0" stroke="#C0A35F" stroke-width="1.99" stroke-opacity="0.72"/></g><image x="518.20" y="50.24" width="215.00" height="100.49" href="data:image/png;base64,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sqaWAZ/H3g8/ipXQ9LzA/Ffi3UHqxO5q/RVLuBZiF6CvA3/EVtIXVP89yc53sRrwEXS/Zj6MvV7WAwZGnMtb2OtlId2vmdexO4qvYa8btQCObwG+efbC91VuP8gxnoiISKG1YCv0Q4B/qf55MFYuNhB4H3bBuSrtWP1wO/AO8E+6LzzbsAvRv6PEvAiasNdMM/a6GNTrO9U/r+qOz/9ir5FO7LXRgb0+lmCLFG3VLyXmJaGyGRERkf5rRZ02pP/asZVv7acRNzphVUREREQkEUreRUREREQSoeRdRERERCQRSt5FRERERBKh5F1EREREJBFK3kVEREREEqHkXUREREQkEUreRUREREQSoeRdRERERCQRSt5FRERERBKh5F1EREREJBFK3kVEREREEqHkXUREREQkEUreRUREREQSoeRdRERERCQRSt5FRERERBKh5F1EREREJBFK3kVEREREEqHkXUREREQkEUreRUREREQSoeRdRERERCQRSt5FRERERBKh5F1EREREJBFK3kVEREREEqHkXUREREQkEUreRUREREQSoeRdRERERCQRSt5FRERERBKh5F1EREREJBFK3kVEREREEqHkXUREREQkEUreRUREREQSoeRdRERERCQRSt5FRERERBKh5F1EREREJBFK3kVEREREEqHkXUREREQkEUreRUREREQSoeRdRERERCQRSt5FRERERBKh5F1EREREJBFK3kVEREREEqHkXUREREQkEUreRUREREQSoeRdRERERCQRSt5FRERERBKh5F1EREREJBFK3kVEREREEqHkXUREREQkEUreRUREREQSoeRdRERERCQRSt5FRERERBKh5F1EREREJBFK3kVEREREEqHkXUREREQkEUreRUREREQSoeRdRERERCQRSt5FRERERBKh5F1EREREJBFK3kVEREREEqHkXUREREQkEUreRUREREQSoeRdRERERCQRSt5FRERERBKh5F1EREREJBFK3kVEREREEqHkXUREREQkEUreRUREREQSoeRdRERERCQRSt5FRERERBKh5F1EREREJBFK3kVEREREEqHkXUREREQkEe/PegIi0i+DgPWBlurX+4DlwGLgf4DXgXcym13/TQJG93rsZ8CcDOYS2kTgQ70eewqYn8FcejsAWK/XY08AszOYS299ze1HwIIM5tKX0cC2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"/></g></svg>
+      <div class="mark-txt">
+        <div class="mark-sub">Turni e presenze</div>
+      </div>
+    </div>
+    <div class="who" id="who"></div>
+  </div>
+  <svg class="blades" viewBox="0 0 1200 10" preserveAspectRatio="none" aria-hidden="true">
+    <g stroke="#C0A35F" stroke-width="1" opacity=".5" id="rit"></g>
+  </svg>
+</header>
+
+<nav class="tabs"><div class="tabs-in" id="tabs"></div></nav>
+<main id="app"></main>
+<footer class="piede-pag">
+  <span>Prototipo · Rossi Clinic STP S.r.l. · dati di esempio, nessun dato reale del personale</span>
+  <span id="salvataggio">—</span>
+</footer>
+
+<script>
+/* =========================================================
+   Turni Rossi Clinic — prototipo navigabile
+   Palette e caratteri dal Brand Identity System v01 (01/09/2026)
+   ========================================================= */
+
+/* ---------- costanti ---------- */
+const TIPI = {
+  M : {nome:"Apertura",   inizio:"09:00", fine:"18:00", pausa:1, ore:8, lavoro:true, nota:"pausa 12:00–13:00"},
+  P : {nome:"Chiusura",   inizio:"12:00", fine:"20:00", pausa:0, ore:8, lavoro:true},
+  S : {nome:"Assistenza", inizio:"08:00", fine:"14:00", pausa:0, ore:6, lavoro:true},
+  SW: {nome:"Smart",      inizio:"09:00", fine:"18:00", pausa:1, ore:8, lavoro:true, nota:"pausa 12:00–13:00"},
+  R : {nome:"Riposo",     ore:0, lavoro:false},
+  F : {nome:"Ferie",      ore:0, lavoro:false},
+  PR: {nome:"Permesso",   ore:0, lavoro:false}
+};
+const GIORNI = ["Lunedì","Martedì","Mercoledì","Giovedì","Venerdì","Sabato","Domenica"];
+const GIORNI_B = ["Lun","Mar","Mer","Gio","Ven","Sab","Dom"];
+const MESI = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
+const Mese = i => MESI[i].charAt(0).toUpperCase()+MESI[i].slice(1);
+const FERIE_ANNUE = 26;      // giorni
+const PERMESSI_ANNUI = 32;   // ore
+const CHIAVE = "rc_turni_v5";
+
+/* ---------- date ---------- */
+const OGGI = new Date(2026, 8, 13);
+function iso(d){ return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+function daIso(s){ const [a,m,g]=s.split("-").map(Number); return new Date(a,m-1,g); }
+function lunedi(d){ const x=new Date(d); const w=(x.getDay()+6)%7; x.setDate(x.getDate()-w); x.setHours(0,0,0,0); return x; }
+function piuGiorni(d,n){ const x=new Date(d); x.setDate(x.getDate()+n); return x; }
+function chiaveSett(d){ return iso(lunedi(d)); }
+function giorniSett(k){ const l=daIso(k); return Array.from({length:7},(_,i)=>iso(piuGiorni(l,i))); }
+function etichettaSett(k){
+  const l=daIso(k), d=piuGiorni(l,6);
+  const a = l.getMonth()===d.getMonth()
+    ? `${l.getDate()}–${d.getDate()} ${Mese(d.getMonth())}`
+    : `${l.getDate()} ${Mese(l.getMonth()).slice(0,3)} – ${d.getDate()} ${Mese(d.getMonth()).slice(0,3)}`;
+  return a;
+}
+function dataBreve(s){ const d=daIso(s); return `${d.getDate()} ${Mese(d.getMonth()).slice(0,3)}`; }
+function dataLunga(s){ const d=daIso(s); return `${GIORNI[(d.getDay()+6)%7]} ${d.getDate()} ${Mese(d.getMonth())}`; }
+function nOre(n){ return Number(n).toLocaleString("it-IT",{maximumFractionDigits:1}); }
+
+/* ---------- stato ---------- */
+let S = null;
+let vista = "mia";
+let ruolo = "p1";          // persona di cui si vedono le schede personali
+let sess = null;           // {utente, ruolo, personaId} — chi è entrato
+let comeChi = null;        // solo SuperUser: identità osservata
+let schermata = "login";   // "login" | "password" | "app"
+let motivoPw = "";         // "primo" | "scaduta" | "scelta"
+let erroreLogin = "";
+let utenteInCorso = null;
+const GIORNI_PASSWORD = 90;
+const SUPERUSER = "superuser";
+let settCorrente = chiaveSett(OGGI);
+let modale = null;
+
+function id(){ return Math.random().toString(36).slice(2,9); }
+
+function semi(){
+  const persone = [
+    {id:"p1", nome:"Viviana", mansione:"Clinic Manager",    oreSett:40, responsabile:true,  fisso:true},
+    {id:"p2", nome:"Chiara",  mansione:"Medical Secretary", oreSett:30, responsabile:false, fisso:true},
+    {id:"p3", nome:"Hadir",   mansione:"Beauty Advisor",    oreSett:40, responsabile:false, fisso:true},
+    {id:"p4", nome:"Giacomo", mansione:"IT Manager",        oreSett:24, responsabile:false, fisso:true}
+  ];
+  const turni = [];
+  // schema ricorrente per persona: indice = giorno della settimana (0 lun … 6 dom)
+  const schemi = {
+    p1:["M","P","M","P","M",null,null],        // apertura e chiusura alternate — 40 h
+    p2:["M",null,"M",null,"M","S",null],       // part time 30 h, sabato in assistenza
+    p3:["P","M","P","M","P",null,null],        // 40 h
+    p4:["SW",null,"SW",null,"SW",null,null]    // part time 24 h, da remoto
+  };
+  // dodici settimane indietro, due in avanti
+  for(let w=-12; w<=2; w++){
+    const k = chiaveSett(piuGiorni(lunedi(OGGI), w*7));
+    const gg = giorniSett(k);
+    persone.forEach(p=>{
+      schemi[p.id].forEach((t,i)=>{
+        if(!t) return;
+        // qualche variazione realistica nelle settimane passate
+        let tipo = t;
+        if(w<0 && (w+i)%11===0) tipo = "R";
+        if(w===-6 && p.id==="p2" && i<5) tipo = "F";   // Chiara in ferie a inizio agosto
+        if(w===-3 && p.id==="p3" && i===2) tipo = "PR";
+        if(tipo==="R") return;
+        turni.push({id:id(), persona:p.id, data:gg[i], tipo, ore: tipo==="PR"?3:null, nota:""});
+      });
+    });
+  }
+  const settimane = {};
+  for(let w=-12; w<=2; w++){
+    const k = chiaveSett(piuGiorni(lunedi(OGGI), w*7));
+    settimane[k] = {
+      stato: w<0 ? "pubblicata" : (w===0 ? "pubblicata" : (w===1 ? "in_revisione" : "bozza")),
+      vistoOwner: w===1 ? null : (w<=0 ? {da:"Alexander", quando:"—"} : null),
+      extra: []
+    };
+  }
+  const prox = chiaveSett(piuGiorni(lunedi(OGGI),7));
+  const gp = giorniSett(prox);
+  const richieste = [
+    {id:id(), tipo:"cambio", da:"p2", turno:null, data:gp[2], verso:"p3",
+     messaggio:"Mercoledì mattina ho la visita dal dentista, Hadir è disponibile a coprire la mia apertura.",
+     stato:"in_attesa", creata:iso(piuGiorni(OGGI,-1)), decisione:null},
+    {id:id(), tipo:"ferie", da:"p3", dal:iso(piuGiorni(lunedi(OGGI),28)), al:iso(piuGiorni(lunedi(OGGI),32)),
+     messaggio:"Matrimonio di mia sorella.", stato:"in_attesa", creata:iso(piuGiorni(OGGI,-2)), decisione:null},
+    {id:id(), tipo:"permesso", da:"p1", data:gp[4], dalle:"09:00", alle:"12:00", ore:3,
+     messaggio:"Visita di controllo.", stato:"approvata", creata:iso(piuGiorni(OGGI,-9)),
+     decisione:{da:"Viviana", quando:iso(piuGiorni(OGGI,-8)), nota:""}},
+    {id:id(), tipo:"cambio", da:"p4", data:iso(piuGiorni(lunedi(OGGI),-5)), verso:"p2",
+     messaggio:"Intervento sul server in orario di chiusura, sposto il mio pomeriggio.",
+     stato:"approvata", creata:iso(piuGiorni(OGGI,-12)), decisione:{da:"Viviana", quando:iso(piuGiorni(OGGI,-11)), nota:""}},
+    {id:id(), tipo:"ferie", da:"p2", dal:iso(piuGiorni(lunedi(OGGI),-40)), al:iso(piuGiorni(lunedi(OGGI),-36)),
+     messaggio:"Settimana di agosto.", stato:"approvata", creata:iso(piuGiorni(OGGI,-60)),
+     decisione:{da:"Viviana", quando:iso(piuGiorni(OGGI,-58)), nota:"Copertura garantita da Hadir."}}
+  ];
+  const utenti = {
+    viviana:   {personaId:"p1", ruolo:"responsabile", nome:"Viviana"},
+    chiara:    {personaId:"p2", ruolo:"dipendente",   nome:"Chiara"},
+    hadir:     {personaId:"p3", ruolo:"dipendente",   nome:"Hadir"},
+    giacomo:   {personaId:"p4", ruolo:"dipendente",   nome:"Giacomo"},
+    alexander: {personaId:null, ruolo:"owner",        nome:"Alexander"},
+    [SUPERUSER]:{personaId:null, ruolo:"super",       nome:"SuperUser"}
+  };
+  // nessuna password è precaricata: ognuno la crea al primo accesso
+  Object.values(utenti).forEach(u=>{ u.hash=null; u.salt=null; u.impostataIl=null; });
+  return {persone, turni, settimane, richieste, utenti, versione:5};
+}
+
+function carica(){
+  try{
+    const g = localStorage.getItem(CHIAVE);
+    if(g){
+      const d = JSON.parse(g);
+      if(d && d.versione===5){
+        (d.turni||[]).forEach(t=>{ if(!TIPI[t.tipo]) t.tipo = "M"; });
+        return d;
+      }
+    }
+  }catch(e){}
+  return semi();
+}
+function salva(){
+  try{
+    localStorage.setItem(CHIAVE, JSON.stringify(S));
+    document.getElementById("salvataggio").textContent = "Modifiche salvate su questo dispositivo";
+  }catch(e){
+    document.getElementById("salvataggio").textContent = "Modifiche valide solo in questa sessione";
+  }
+}
+function azzera(){
+  try{ localStorage.removeItem(CHIAVE); }catch(e){}
+  S = semi(); render(); avviso("Prototipo riportato ai dati di esempio");
+}
+
+/* ---------- accesso ---------- */
+function sale(){
+  const a = new Uint8Array(8);
+  if(self.crypto && crypto.getRandomValues) crypto.getRandomValues(a);
+  else for(let i=0;i<a.length;i++) a[i] = Math.floor(Math.random()*256);
+  return [...a].map(x=>x.toString(16).padStart(2,"0")).join("");
+}
+async function impronta(pw, salt){
+  const testo = salt + "\u00b7" + pw;
+  if(self.crypto && crypto.subtle && crypto.subtle.digest){
+    const b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(testo));
+    return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("");
+  }
+  let h = 5381;
+  for(const c of testo) h = ((h<<5)+h+c.charCodeAt(0))>>>0;
+  return "f"+h.toString(16);
+}
+function utente(u){ return (S.utenti||{})[u]; }
+function giorniPassword(u){
+  const x = utente(u);
+  if(!x || !x.impostataIl) return null;
+  return Math.floor((Date.now() - new Date(x.impostataIl).getTime())/86400000);
+}
+function passwordScaduta(u){
+  const g = giorniPassword(u);
+  return g !== null && g >= GIORNI_PASSWORD;
+}
+function entra(u){
+  const x = utente(u);
+  sess = {utente:u, ruolo:x.ruolo, personaId:x.personaId, nome:x.nome};
+  comeChi = null;
+  try{ sessionStorage.setItem("rc_sess", u); }catch(e){}
+  if(passwordScaduta(u)){ schermata="password"; motivoPw="scaduta"; utenteInCorso=u; }
+  else schermata = "app";
+  vista = schede()[0].k;
+}
+function esci(){
+  sess = null; comeChi = null; schermata = "login"; erroreLogin = ""; vista = "mia";
+  try{ sessionStorage.removeItem("rc_sess"); }catch(e){}
+  render();
+}
+function attuale(){
+  if(!sess) return {ruolo:"dipendente", personaId:"p1"};
+  if(sess.ruolo==="super" && comeChi) return comeChi;
+  return {ruolo:sess.ruolo, personaId:sess.personaId};
+}
+
+/* ---------- lettura dei dati ---------- */
+const per = pid => S.persone.find(p=>p.id===pid) || {nome:"—", mansione:""};
+const nomeDi = pid => per(pid).nome;
+const responsabile = () => S.persone.find(p=>p.responsabile);
+const nomeResp = () => responsabile() ? responsabile().nome : "Responsabile turni";
+
+function turniDi(pid, k){ const gg=giorniSett(k); return S.turni.filter(t=>t.persona===pid && gg.includes(t.data)); }
+function turnoIn(pid, data){ return S.turni.find(t=>t.persona===pid && t.data===data); }
+function oreTurno(t){ if(!t) return 0; if(t.tipo==="PR") return 0; return TIPI[t.tipo].lavoro ? (t.ore ?? TIPI[t.tipo].ore) : 0; }
+function oreSett(pid,k){ return turniDi(pid,k).reduce((s,t)=>s+oreTurno(t),0); }
+function oreMese(pid, anno, mese){
+  return S.turni.filter(t=>{
+    if(t.persona!==pid) return false;
+    const d=daIso(t.data); return d.getFullYear()===anno && d.getMonth()===mese;
+  }).reduce((s,t)=>s+oreTurno(t),0);
+}
+function personeSett(k){
+  const s = S.settimane[k] || {extra:[]};
+  const extra = (s.extra||[]).map(e=>({...e, temporaneo:true}));
+  return [...S.persone, ...extra];
+}
+function statoSett(k){ return (S.settimane[k] && S.settimane[k].stato) || "bozza"; }
+function assicuraSett(k){ if(!S.settimane[k]) S.settimane[k] = {stato:"bozza", vistoOwner:null, extra:[]}; return S.settimane[k]; }
+
+function ferieUsate(pid){
+  const anno = OGGI.getFullYear();
+  return S.turni.filter(t=>t.persona===pid && t.tipo==="F" && daIso(t.data).getFullYear()===anno).length;
+}
+function ferieFuture(pid){
+  return S.turni.filter(t=>t.persona===pid && t.tipo==="F" && daIso(t.data)>OGGI).length;
+}
+function permessiUsati(pid){
+  const anno = OGGI.getFullYear();
+  return S.turni.filter(t=>t.persona===pid && t.tipo==="PR" && daIso(t.data).getFullYear()===anno)
+                .reduce((s,t)=>s+(t.ore||0),0);
+}
+function inAttesa(){ return S.richieste.filter(r=>r.stato==="in_attesa"); }
+function mieRichieste(pid){ return S.richieste.filter(r=>r.da===pid).sort((a,b)=>b.creata.localeCompare(a.creata)); }
+
+/* ---------- utilità di vista ---------- */
+const esc = s => String(s??"").replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function chipTurno(t){
+  if(!t) return "";
+  const T = TIPI[t.tipo];
+  const extra = t.tipo==="PR" ? ` ${nOre(t.ore||0)}h` : "";
+  return `<span class="chip c-${t.tipo}">${T.nome}${extra}</span>`;
+}
+function orarioTurno(t){
+  if(!t) return "";
+  const T = TIPI[t.tipo];
+  return T.lavoro ? `${T.inizio}–${T.fine}` : "";
+}
+function stChip(stato){
+  const m = {in_attesa:["st-attesa","In attesa"], approvata:["st-ok","Approvata"], rifiutata:["st-no","Rifiutata"],
+             bozza:["st-bozza","Bozza"], in_revisione:["st-revisione","In revisione"], pubblicata:["st-ok","Pubblicata"]};
+  const [c,l] = m[stato] || ["st-bozza",stato];
+  return `<span class="st ${c}">${l}</span>`;
+}
+function avviso(testo){
+  const t = document.createElement("div");
+  t.className="toast"; t.textContent=testo; document.body.appendChild(t);
+  setTimeout(()=>t.remove(), 2600);
+}
+
+/* ---------- intestazione e schede ---------- */
+function disegnaRitmo(){
+  const g = document.getElementById("rit");
+  let s="";
+  for(let x=6; x<1200; x+=22){ const h = 4 + (x%66===0?5:0); s+=`<path d="M${x} ${10-h}V10"/>`; }
+  g.innerHTML = s;
+}
+const ETICHETTA_RUOLO = {
+  dipendente:"", responsabile:"Shift Management", owner:"Last Check", super:"SuperUser"
+};
+function disegnaUtente(){
+  const c = document.getElementById("who");
+  if(!sess){ c.innerHTML = ""; return; }
+  const a = attuale();
+  const sup = sess.ruolo==="super";
+  const nome = a.personaId ? nomeDi(a.personaId) : (a.ruolo==="owner" ? "Alexander" : sess.nome);
+  const sotto = ETICHETTA_RUOLO[a.ruolo] || (a.personaId ? per(a.personaId).mansione : "");
+  const g = giorniPassword(sess.utente);
+  const manca = g===null ? null : GIORNI_PASSWORD - g;
+  c.innerHTML = `
+    ${sup ? `<select class="role" id="comechi" aria-label="Vedi come">
+        <option value="">SuperUser · vista completa</option>
+        ${S.persone.map(p=>`<option value="p:${p.id}">Vedi come ${esc(p.nome)}</option>`).join("")}
+        <option value="resp">Vedi come ${esc(nomeResp())} · Shift Management</option>
+        <option value="owner">Vedi come Alexander · Last Check</option>
+      </select>` : ""}
+    <div class="utente">
+      <div class="tondo${sup && !comeChi ?" super":""}">${esc((sup && !comeChi ? "S" : nome).charAt(0))}</div>
+      <div>
+        <div class="nome">${esc(sup && !comeChi ? "SuperUser" : nome)}</div>
+        <div class="ruolo">${esc(sotto)}</div>
+      </div>
+    </div>
+    <button class="btn sm" data-az="cambia-pw">Password</button>
+    <button class="btn sm" data-az="esci">Esci</button>
+    ${manca!==null && manca<=10 ? `<span class="scadenza vicina">da rinnovare fra ${manca} gg</span>` : ""}`;
+  const sel = c.querySelector("#comechi");
+  if(sel){
+    sel.value = comeChi ? (comeChi.ruolo==="dipendente" ? "p:"+comeChi.personaId : comeChi.ruolo) : "";
+    sel.onchange = e => {
+      const v = e.target.value;
+      comeChi = !v ? null
+        : v.startsWith("p:") ? {ruolo:"dipendente", personaId:v.slice(2)}
+        : v==="resp" ? {ruolo:"responsabile", personaId:(responsabile()||{}).id}
+        : {ruolo:"owner", personaId:null};
+      vista = schede()[0].k;
+      render();
+    };
+  }
+  c.querySelectorAll("[data-az]").forEach(el=> el.onclick = ()=>azione(el));
+}
+function schede(){
+  const a = attuale();
+  const mie = pid => [
+    {k:"mia", t:"La mia settimana"},
+    {k:"ore", t:"Le mie ore"},
+    {k:"ferie", t:"Ferie e permessi"},
+    {k:"richieste", t:"Le mie richieste", n:mieRichieste(pid).filter(r=>r.stato==="in_attesa").length}
+  ];
+  if(a.ruolo==="owner") return [
+    {k:"owner", t:"Settimana"},
+    {k:"copertura", t:"Ore di tutti"},
+    {k:"team", t:"Team"}
+  ];
+  if(a.ruolo==="responsabile") return [
+    ...mie(a.personaId),
+    {k:"pianifica", t:"Pianifica turni"},
+    {k:"approva", t:"Approvazioni", n:inAttesa().length},
+    {k:"assenze", t:"Ferie del team"},
+    {k:"copertura", t:"Ore di tutti"},
+    {k:"team", t:"Team"}
+  ];
+  if(a.ruolo==="super") return [
+    {k:"super", t:"Diagnostica"},
+    {k:"pianifica", t:"Pianifica turni"},
+    {k:"approva", t:"Approvazioni", n:inAttesa().length},
+    {k:"assenze", t:"Ferie del team"},
+    {k:"owner", t:"Vista Alexander"},
+    {k:"copertura", t:"Ore di tutti"},
+    {k:"team", t:"Team"}
+  ];
+  return [...mie(a.personaId), {k:"settimana", t:"Turni del team"}];
+}
+function disegnaSchede(){
+  const c = document.getElementById("tabs");
+  c.innerHTML = schede().map(s=>`
+    <button class="tab" data-v="${s.k}" aria-current="${vista===s.k}">
+      ${s.t}${s.n?`<span class="dot">${s.n}</span>`:""}
+    </button>`).join("");
+  c.querySelectorAll(".tab").forEach(b=> b.onclick = ()=>{ vista=b.dataset.v; render(); });
+}
+
+/* =========================================================
+   VISTE DIPENDENTE
+   ========================================================= */
+function vistaMia(){
+  const pid = ruolo, p = per(pid);
+  const k = settCorrente, gg = giorniSett(k);
+  const ore = oreSett(pid,k);
+  const delta = ore - p.oreSett;
+  const mese = oreMese(pid, OGGI.getFullYear(), OGGI.getMonth());
+  const attesa = mieRichieste(pid).filter(r=>r.stato==="in_attesa");
+  const stato = statoSett(k);
+
+  const giorni = gg.map(d=>{
+    const t = turnoIn(pid,d), oggi = d===iso(OGGI);
+    return `<div class="day${oggi?" oggi":""}">
+      <div class="dh"><span class="dn">${GIORNI_B[(daIso(d).getDay()+6)%7]}</span><span class="dd">${daIso(d).getDate()}</span></div>
+      ${t ? `${chipTurno(t)}<div class="orario">${orarioTurno(t)||"&nbsp;"}</div>` : `<div class="vuoto">Riposo</div>`}
+    </div>`;
+  }).join("");
+
+  return `
+  <div class="sect-head">
+    <h2>Ciao ${esc(p.nome)}</h2>
+    <p>${stato==="pubblicata" ? "I turni di questa settimana sono pubblicati." : "Attenzione: la settimana non è ancora pubblicata, può cambiare."}</p>
+  </div>
+  <div class="ground"></div>
+
+  <div class="stack">
+    <section class="panel">
+      <div class="tiles">
+        <div class="tile"><div class="k">Ore in settimana</div><div class="v">${nOre(ore)}<small> / ${p.oreSett}</small></div>
+          <div class="n ${delta>0?"pos":delta<0?"neg":""}">${delta===0?"in linea con il contratto":(delta>0?"+":"")+nOre(delta)+" ore"}</div></div>
+        <div class="tile"><div class="k">Ore nel mese</div><div class="v">${nOre(mese)}</div><div class="n">${Mese(OGGI.getMonth())} ${OGGI.getFullYear()}</div></div>
+        <div class="tile"><div class="k">Ferie residue</div><div class="v">${FERIE_ANNUE-ferieUsate(pid)}<small> gg</small></div>
+          <div class="n">${ferieUsate(pid)} usate su ${FERIE_ANNUE}</div></div>
+        <div class="tile"><div class="k">Permessi usati</div><div class="v">${nOre(permessiUsati(pid))}<small> / ${PERMESSI_ANNUI} h</small></div>
+          <div class="n">Anno ${OGGI.getFullYear()}</div></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h3>Settimana ${etichettaSett(k)} <span class="r">${stChip(stato)}</span></h3>
+      <div class="pad"><div class="days">${giorni}</div></div>
+      <div class="legenda">
+        <button class="btn sm gold" data-az="nuovo-cambio">Chiedi un cambio turno</button>
+        <button class="btn sm" data-az="nuove-ferie">Chiedi ferie</button>
+        <button class="btn sm" data-az="nuovo-permesso">Chiedi un permesso</button>
+      </div>
+    </section>
+
+    ${attesa.length ? `<section class="panel">
+      <h3>In attesa di risposta <span class="r">Approva ${esc(nomeResp())}</span></h3>
+      ${attesa.map(rigaRichiesta).join("")}
+    </section>` : ""}
+  </div>`;
+}
+
+function vistaOre(){
+  const pid = ruolo, p = per(pid);
+  const sett = [];
+  for(let w=-7; w<=0; w++){
+    const k = chiaveSett(piuGiorni(lunedi(OGGI), w*7));
+    sett.push({k, ore:oreSett(pid,k), cur:w===0});
+  }
+  const max = Math.max(p.oreSett, ...sett.map(s=>s.ore), 1);
+  const barre = sett.map(s=>`
+    <div class="bar${s.cur?" cur":""}">
+      <div class="fill" style="height:${Math.max(3,(s.ore/max)*100)}%"><span class="val">${nOre(s.ore)}</span></div>
+      <span class="lab">${dataBreve(s.k)}</span>
+    </div>`).join("");
+
+  const mesi = [];
+  for(let m=0; m<=OGGI.getMonth(); m++){
+    const o = oreMese(pid, OGGI.getFullYear(), m);
+    if(o>0 || m===OGGI.getMonth()) mesi.push({m, ore:o});
+  }
+  const attese = p.oreSett*4.33;
+
+  return `
+  <div class="sect-head">
+    <h2>Le mie ore</h2>
+    <p>Ore effettivamente a turno. Ferie, permessi e riposi non contano come ore lavorate.</p>
+  </div>
+  <div class="ground"></div>
+  <div class="cols">
+    <section class="panel">
+      <h3>Ultime otto settimane <span class="r">contratto ${p.oreSett} h/settimana</span></h3>
+      <div class="pad">
+        <div class="chart">
+          <div class="target" style="bottom:${((p.oreSett/max)*158).toFixed(1)}px"><span>${p.oreSett} h</span></div>
+          ${barre}
+        </div>
+        <div class="axis"></div>
+        <p class="mini" style="margin:12px 0 0">La riga tratteggiata è l'orario contrattuale. Sopra la riga sono straordinari, sotto è recupero da concordare.</p>
+      </div>
+    </section>
+    <section class="panel">
+      <h3>Mesi precedenti</h3>
+      <table class="dati">
+        <thead><tr><th>Mese</th><th class="num">Ore</th><th class="num">Scarto</th></tr></thead>
+        <tbody>
+          ${mesi.reverse().map(x=>{
+            const d = x.ore - attese;
+            return `<tr><td>${Mese(x.m)}</td><td class="num">${nOre(x.ore)}</td>
+              <td class="num" style="color:${Math.abs(d)<4?"var(--ink-3)":d>0?"var(--ok)":"var(--no)"}">${d>0?"+":""}${nOre(d)}</td></tr>`;
+          }).join("")}
+        </tbody>
+      </table>
+      <div class="legenda"><span class="mini">Scarto rispetto a ${nOre(attese)} ore mensili teoriche (${p.oreSett} h × 4,33 settimane).</span></div>
+    </section>
+  </div>`;
+}
+
+function vistaFerie(){
+  const pid = ruolo;
+  const anno = OGGI.getFullYear();
+  const ferie = S.turni.filter(t=>t.persona===pid && (t.tipo==="F"||t.tipo==="PR") && daIso(t.data).getFullYear()===anno)
+                       .sort((a,b)=>a.data.localeCompare(b.data));
+  const passate = ferie.filter(t=>daIso(t.data)<=OGGI);
+  const future  = ferie.filter(t=>daIso(t.data)>OGGI);
+  const riga = t => `<div class="riga">
+      <div class="main"><div class="tt">${dataLunga(t.data)}</div>
+        <div class="sub">${TIPI[t.tipo].nome}${t.tipo==="PR"?` · ${nOre(t.ore||0)} ore`:" · giornata intera"}${t.nota?" · "+esc(t.nota):""}</div></div>
+      <div class="az">${chipTurno(t)}</div>
+    </div>`;
+
+  return `
+  <div class="sect-head">
+    <h2>Ferie e permessi</h2>
+    <p>Le richieste per le settimane future passano da ${esc(nomeResp())}. Fino all'approvazione restano segnate come proposte.</p>
+  </div>
+  <div class="ground"></div>
+  <div class="stack">
+    <section class="panel"><div class="tiles">
+      <div class="tile"><div class="k">Ferie residue</div><div class="v">${FERIE_ANNUE-ferieUsate(pid)}<small> gg</small></div><div class="n">su ${FERIE_ANNUE} annui</div></div>
+      <div class="tile"><div class="k">Ferie godute</div><div class="v">${ferieUsate(pid)-ferieFuture(pid)}<small> gg</small></div><div class="n">Al ${OGGI.getDate()} ${Mese(OGGI.getMonth())}</div></div>
+      <div class="tile"><div class="k">Già programmate</div><div class="v">${ferieFuture(pid)}<small> gg</small></div><div class="n">nelle settimane future</div></div>
+      <div class="tile"><div class="k">Permessi</div><div class="v">${nOre(permessiUsati(pid))}<small> / ${PERMESSI_ANNUI} h</small></div><div class="n">residui ${nOre(PERMESSI_ANNUI-permessiUsati(pid))} ore</div></div>
+    </div></section>
+
+    <section class="panel">
+      <h3>Programmate <span class="r">${future.length} voci</span></h3>
+      ${future.length ? future.map(riga).join("") : `<div class="vuoto-box">Nessuna assenza programmata. Usa il pulsante qui sotto per inserirne una.</div>`}
+      <div class="legenda">
+        <button class="btn sm gold" data-az="nuove-ferie">Inserisci ferie</button>
+        <button class="btn sm" data-az="nuovo-permesso">Inserisci permesso</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h3>Già usufruite nel ${anno}</h3>
+      ${passate.length ? passate.reverse().map(riga).join("") : `<div class="vuoto-box">Nessuna assenza registrata quest'anno.</div>`}
+    </section>
+  </div>`;
+}
+
+function rigaRichiesta(r, conAzioni){
+  const p = per(r.da);
+  let tt="", sub="";
+  if(r.tipo==="cambio"){
+    tt = `Cambio turno · ${dataLunga(r.data)}`;
+    sub = `${esc(p.nome)} propone lo scambio con ${esc(nomeDi(r.verso))}`;
+  } else if(r.tipo==="ferie"){
+    const gg = Math.round((daIso(r.al)-daIso(r.dal))/86400000)+1;
+    tt = `Ferie · ${dataBreve(r.dal)} – ${dataBreve(r.al)}`;
+    sub = `${esc(p.nome)} · ${gg} giorni · residuo dopo l'approvazione ${FERIE_ANNUE-ferieUsate(r.da)-(r.stato==="in_attesa"?gg:0)} gg`;
+  } else {
+    tt = `Permesso · ${dataLunga(r.data)}`;
+    sub = `${esc(p.nome)} · ${r.dalle}–${r.alle} · ${nOre(r.ore)} ore`;
+  }
+  return `<div class="riga">
+    <div class="main">
+      <div class="tt">${tt}</div>
+      <div class="sub">${sub} · richiesta il ${dataBreve(r.creata)}</div>
+      ${r.messaggio?`<div class="note">${esc(r.messaggio)}</div>`:""}
+      ${r.decisione&&r.decisione.nota?`<div class="note">${esc(r.decisione.da)}: ${esc(r.decisione.nota)}</div>`:""}
+    </div>
+    <div class="az">
+      ${stChip(r.stato)}
+      ${conAzioni && r.stato==="in_attesa" ? `
+        <button class="btn sm ok" data-az="approva" data-id="${r.id}">Approva</button>
+        <button class="btn sm no" data-az="rifiuta" data-id="${r.id}">Rifiuta</button>` : ""}
+    </div>
+  </div>`;
+}
+
+function vistaRichieste(){
+  const pid = ruolo, mie = mieRichieste(pid);
+  return `
+  <div class="sect-head">
+    <h2>Le mie richieste</h2>
+    <p>Ogni richiesta resta tracciata: chi l'ha fatta, quando, chi ha deciso e con quale nota.</p>
+  </div>
+  <div class="ground"></div>
+  <section class="panel">
+    <h3>Storico <span class="r">${mie.length} richieste</span></h3>
+    ${mie.length ? mie.map(r=>rigaRichiesta(r,false)).join("") : `<div class="vuoto-box">Non hai ancora fatto richieste.</div>`}
+    <div class="legenda">
+      <button class="btn sm gold" data-az="nuovo-cambio">Cambio turno</button>
+      <button class="btn sm" data-az="nuove-ferie">Ferie</button>
+      <button class="btn sm" data-az="nuovo-permesso">Permesso</button>
+    </div>
+  </section>`;
+}
+
+/* =========================================================
+   GRIGLIA SETTIMANALE
+   ========================================================= */
+function navSett(){
+  const k = settCorrente;
+  return `<div class="btnrow" style="align-items:center">
+    <button class="btn sm" data-az="sett-prec">←</button>
+    <button class="btn sm" data-az="sett-oggi">Settimana corrente</button>
+    <button class="btn sm" data-az="sett-succ">→</button>
+    <span class="mini" style="margin-left:4px">${etichettaSett(k)} ${daIso(k).getFullYear()}</span>
+  </div>`;
+}
+
+function griglia(k, editabile){
+  const gg = giorniSett(k);
+  const persone = personeSett(k);
+  const testa = gg.map(d=>{
+    const dt = daIso(d), oggi = d===iso(OGGI);
+    return `<th class="${oggi?"col-oggi":""}">${GIORNI_B[(dt.getDay()+6)%7]}<span>${dt.getDate()} ${Mese(dt.getMonth()).slice(0,3)}</span></th>`;
+  }).join("");
+
+  const righe = persone.map(p=>{
+    const tot = gg.reduce((s,d)=>s+oreTurno(turnoIn(p.id,d)),0);
+    const celle = gg.map(d=>{
+      const t = turnoIn(p.id,d), oggi = d===iso(OGGI);
+      const dentro = t
+        ? `${chipTurno(t)}<span class="hh">${orarioTurno(t)||"&nbsp;"}</span>`
+        : (editabile ? `<span class="add">+</span>` : `<span class="hh" style="color:var(--ink-3)">riposo</span>`);
+      return `<td class="${oggi?"col-oggi":""}">${
+        editabile
+          ? `<button class="cella" data-az="cella" data-p="${p.id}" data-d="${d}">${dentro}</button>`
+          : `<div class="cella">${dentro}</div>`
+      }</td>`;
+    }).join("");
+    return `<tr>
+      <td class="persona">
+        <div class="nm">${esc(p.nome)}${p.temporaneo?` <span class="st st-revisione">solo questa settimana</span>`:""}</div>
+        <div class="ms">${p.mansione ? esc(p.mansione) : `<button class="pill-mans" data-az="mansione" data-p="${p.id}">+ mansione</button>`}</div>
+        <div class="tot">${nOre(tot)} h${p.oreSett?` / ${p.oreSett}`:""}</div>
+      </td>
+      ${celle}
+    </tr>`;
+  }).join("");
+
+  return `<div class="gridwrap"><table class="griglia">
+    <thead><tr><th class="persona">Persona</th>${testa}</tr></thead>
+    <tbody>${righe}</tbody>
+  </table></div>`;
+}
+
+function vistaPianifica(){
+  const k = settCorrente, st = statoSett(k), s = assicuraSett(k);
+  const gg = giorniSett(k);
+  const copertura = gg.map(d=>{
+    const n = personeSett(k).filter(p=>{ const t=turnoIn(p.id,d); return t && TIPI[t.tipo].lavoro; }).length;
+    return {d, n};
+  });
+  const scoperti = copertura.filter(c=>c.n<2 && (daIso(c.d).getDay()!==0));
+
+  let azioni = "";
+  if(st==="bozza") azioni = `<button class="btn gold" data-az="in-revisione">Manda ad Alexander per il last check</button>`;
+  else if(st==="in_revisione") azioni = `<button class="btn gold" data-az="pubblica">Approva e pubblica</button>
+      <button class="btn" data-az="in-bozza">Riporta in bozza</button>`;
+  else azioni = `<button class="btn" data-az="in-bozza">Riapri per modifiche</button>`;
+
+  return `
+  <div class="sect-head">
+    <h2>Pianifica turni</h2>
+    <p>Tocca una casella per assegnare o cambiare un turno. La settimana diventa visibile al team solo quando è pubblicata.</p>
+  </div>
+  <div class="ground"></div>
+  <div class="stack">
+    <section class="panel">
+      <h3>Settimana ${etichettaSett(k)} <span class="r">${stChip(st)}${s.vistoOwner?` · last check di Alexander`:""}</span></h3>
+      <div class="pad" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between;align-items:center">
+        ${navSett()}
+        <div class="btnrow">
+          <button class="btn sm" data-az="aggiungi-persona">+ Persona solo questa settimana</button>
+          <button class="btn sm" data-az="copia-settimana">Copia dalla settimana scorsa</button>
+        </div>
+      </div>
+      ${griglia(k,true)}
+      <div class="legenda">
+        ${Object.keys(TIPI).filter(t=>t!=="R").map(t=>`<span class="chip c-${t}">${TIPI[t].nome}${TIPI[t].lavoro?` ${TIPI[t].inizio}–${TIPI[t].fine}`:""}${TIPI[t].pausa?` · pausa ${TIPI[t].pausa} h`:""}</span>`).join("")}
+      </div>
+    </section>
+
+    ${scoperti.length ? `<div class="avviso">
+      <div><div class="eyebrow">Copertura da verificare</div>
+      ${scoperti.map(c=>`${GIORNI[(daIso(c.d).getDay()+6)%7]} ${daIso(c.d).getDate()}: ${c.n===0?"nessuno in turno":"una sola persona"}`).join(" · ")}</div>
+    </div>` : ""}
+
+    <section class="panel">
+      <h3>Stato della settimana</h3>
+      <div class="pad">
+        <p style="margin:0 0 14px;color:var(--ink-2);font-size:13.5px">
+          ${st==="bozza" ? "Bozza: la vedi solo tu. Alexander non la riceve finché non la mandi al last check."
+           : st==="in_revisione" ? (s.vistoOwner ? "Alexander l'ha aperta. Puoi approvarla e pubblicarla al team."
+                                                 : "In attesa del last check di Alexander. Puoi comunque pubblicarla: il last check è informativo, l'approvazione è tua.")
+           : "Pubblicata: il team la vede nella propria dashboard."}
+        </p>
+        <div class="btnrow">${azioni}</div>
+      </div>
+    </section>
+  </div>`;
+}
+
+function vistaSettimanaTeam(){
+  const k = settCorrente, st = statoSett(k);
+  if(st!=="pubblicata"){
+    return `
+    <div class="sect-head"><h2>Turni del team</h2><p>Settimana ${etichettaSett(k)}</p></div>
+    <div class="ground"></div>
+    ${`<div class="pad" style="padding-left:0">${navSett()}</div>`}
+    <div class="avviso"><div><div class="eyebrow">Non ancora pubblicata</div>
+      Questa settimana è ancora ${st==="bozza"?"in bozza":"in revisione"}. La vedrai qui appena ${esc(nomeResp())} la pubblica.</div></div>`;
+  }
+  return `
+  <div class="sect-head"><h2>Turni del team</h2><p>Chi c'è, in quali orari. Sola lettura.</p></div>
+  <div class="ground"></div>
+  <section class="panel">
+    <h3>Settimana ${etichettaSett(k)} <span class="r">${stChip(st)}</span></h3>
+    <div class="pad">${navSett()}</div>
+    ${griglia(k,false)}
+  </section>`;
+}
+
+/* =========================================================
+   RESPONSABILE — approvazioni e assenze
+   ========================================================= */
+function vistaApprova(){
+  const attesa = inAttesa();
+  const decise = S.richieste.filter(r=>r.stato!=="in_attesa").sort((a,b)=>b.creata.localeCompare(a.creata));
+  return `
+  <div class="sect-head">
+    <h2>Approvazioni</h2>
+    <p>Pensata per il telefono: si legge la richiesta e si decide con un tocco. La decisione aggiorna subito il calendario.</p>
+  </div>
+  <div class="ground"></div>
+  <div class="stack">
+    <section class="panel">
+      <h3>Da decidere <span class="r">${attesa.length} in attesa</span></h3>
+      ${attesa.length ? attesa.map(r=>rigaRichiesta(r,true)).join("")
+        : `<div class="vuoto-box">Nessuna richiesta in attesa.</div>`}
+    </section>
+    <section class="panel">
+      <h3>Già decise</h3>
+      ${decise.length ? decise.map(r=>rigaRichiesta(r,false)).join("") : `<div class="vuoto-box">Ancora nessuna decisione registrata.</div>`}
+    </section>
+  </div>`;
+}
+
+function vistaAssenze(){
+  const anno = OGGI.getFullYear();
+  const righe = S.persone.map(p=>{
+    const usate = ferieUsate(p.id), fut = ferieFuture(p.id);
+    return `<tr>
+      <td>${esc(p.nome)}<div class="ms" style="font-size:12px;color:var(--ink-3)">${p.mansione?esc(p.mansione):"mansione da definire"}</div></td>
+      <td class="num">${usate-fut}</td><td class="num">${fut}</td><td class="num">${FERIE_ANNUE-usate}</td>
+      <td class="num">${nOre(permessiUsati(p.id))}</td>
+    </tr>`;
+  }).join("");
+  const prossime = S.turni.filter(t=>(t.tipo==="F"||t.tipo==="PR") && daIso(t.data)>OGGI)
+    .sort((a,b)=>a.data.localeCompare(b.data));
+  return `
+  <div class="sect-head">
+    <h2>Ferie e permessi del team</h2>
+    <p>Saldo per persona nell'anno ${anno} e assenze già programmate nelle settimane future.</p>
+  </div>
+  <div class="ground"></div>
+  <div class="cols">
+    <section class="panel">
+      <h3>Saldi ${anno}</h3>
+      <table class="dati">
+        <thead><tr><th>Persona</th><th class="num">Godute</th><th class="num">Programmate</th><th class="num">Residue</th><th class="num">Permessi h</th></tr></thead>
+        <tbody>${righe}</tbody>
+      </table>
+    </section>
+    <section class="panel">
+      <h3>In arrivo</h3>
+      ${prossime.length ? prossime.map(t=>`<div class="riga">
+        <div class="main"><div class="tt">${esc(nomeDi(t.persona))}</div><div class="sub">${dataLunga(t.data)}</div></div>
+        <div class="az">${chipTurno(t)}</div></div>`).join("")
+      : `<div class="vuoto-box">Nessuna assenza programmata.</div>`}
+    </section>
+  </div>`;
+}
+
+/* =========================================================
+   ALEXANDER — sola lettura
+   ========================================================= */
+function vistaOwner(){
+  const k = settCorrente, st = statoSett(k), s = assicuraSett(k);
+  const gg = giorniSett(k);
+  const persone = personeSett(k);
+  const oreTot = persone.reduce((tot,p)=>tot+gg.reduce((x,d)=>x+oreTurno(turnoIn(p.id,d)),0),0);
+  const attesa = inAttesa().length;
+
+  return `
+  <div class="sect-head">
+    <h2>Settimana ${etichettaSett(k)}</h2>
+    <p>Last check, in sola lettura. I turni li fa e li approva ${esc(nomeResp())}: qui li guardi prima che vadano al team.</p>
+  </div>
+  <div class="ground"></div>
+  <div class="stack">
+    <section class="panel"><div class="tiles">
+      <div class="tile"><div class="k">Stato</div><div class="v" style="font-size:19px;padding-top:5px">${st==="pubblicata"?"Pubblicata":st==="in_revisione"?"In revisione":"Bozza"}</div>
+        <div class="n">${st==="in_revisione"?"in attesa di pubblicazione":st==="bozza"?"non ancora inviata":"visibile al team"}</div></div>
+      <div class="tile"><div class="k">Ore totali</div><div class="v">${nOre(oreTot)}</div><div class="n">somma dei turni della settimana</div></div>
+      <div class="tile"><div class="k">Persone in turno</div><div class="v">${persone.filter(p=>gg.some(d=>{const t=turnoIn(p.id,d);return t&&TIPI[t.tipo].lavoro;})).length}</div>
+        <div class="n">${persone.filter(p=>p.temporaneo).length} solo questa settimana</div></div>
+      <div class="tile"><div class="k">Richieste aperte</div><div class="v">${attesa}</div><div class="n">in attesa di ${esc(nomeResp())}</div></div>
+    </div></section>
+
+    <section class="panel">
+      <h3>Turni ${etichettaSett(k)} <span class="r">${stChip(st)}</span></h3>
+      <div class="pad">${navSett()}</div>
+      ${griglia(k,false)}
+    </section>
+
+    <section class="panel">
+      <h3>Last check</h3>
+      <div class="pad">
+        ${s.vistoOwner
+          ? `<p style="margin:0 0 12px;color:var(--ink-2);font-size:13.5px">Last check fatto${s.vistoOwner.quando&&s.vistoOwner.quando!=="—"?` il ${dataBreve(s.vistoOwner.quando)}`:""}.${s.vistoOwner.nota?` Nota: «${esc(s.vistoOwner.nota)}»`:""}</p>`
+          : `<p style="margin:0 0 12px;color:var(--ink-2);font-size:13.5px">Puoi segnalare a ${esc(nomeResp())} che l'hai guardata, con una nota se serve. Non blocca la pubblicazione.</p>`}
+        <div class="btnrow"><button class="btn gold" data-az="visto">${s.vistoOwner?"Aggiorna la nota":"Last check fatto"}</button></div>
+      </div>
+    </section>
+  </div>`;
+}
+
+function vistaCopertura(){
+  const k = settCorrente, gg = giorniSett(k), persone = personeSett(k);
+  const max = 4;
+  const perGiorno = gg.map(d=>({d, n:persone.filter(p=>{const t=turnoIn(p.id,d);return t&&TIPI[t.tipo].lavoro;}).length}));
+  const righe = persone.map(p=>{
+    const ore = gg.reduce((x,d)=>x+oreTurno(turnoIn(p.id,d)),0);
+    const gio = gg.filter(d=>{const t=turnoIn(p.id,d);return t&&TIPI[t.tipo].lavoro;}).length;
+    return `<tr><td>${esc(p.nome)}${p.temporaneo?" · temporanea":""}</td><td class="num">${gio}</td><td class="num">${nOre(ore)}</td>
+      <td class="num">${p.oreSett?nOre(ore-p.oreSett):"—"}</td></tr>`;
+  }).join("");
+  const meseOra = OGGI.getMonth(), mesePrima = (meseOra+11)%12;
+  const annoPrima = meseOra===0 ? OGGI.getFullYear()-1 : OGGI.getFullYear();
+  const mensili = S.persone.map(p=>`<tr>
+      <td>${esc(p.nome)}<div style="font-size:12px;color:var(--ink-3)">${p.mansione?esc(p.mansione):"—"}</div></td>
+      <td class="num">${nOre(oreMese(p.id, OGGI.getFullYear(), meseOra))}</td>
+      <td class="num">${nOre(oreMese(p.id, annoPrima, mesePrima))}</td>
+      <td class="num">${ferieUsate(p.id)}</td>
+      <td class="num">${nOre(permessiUsati(p.id))}</td>
+    </tr>`).join("");
+  return `
+  <div class="sect-head"><h2>Ore di tutti</h2><p>Ore per persona nella settimana ${etichettaSett(k)}, nel mese e nel mese precedente, con ferie e permessi consumati.</p></div>
+  <div class="ground"></div>
+  <div class="cols">
+    <section class="panel">
+      <h3>Presenze per giorno</h3>
+      <div class="pad">
+        <div class="chart" style="height:150px">
+          ${perGiorno.map(c=>`<div class="bar${c.d===iso(OGGI)?" cur":""}">
+            <div class="fill" style="height:${Math.max(3,(c.n/max)*100)}%"><span class="val">${c.n}</span></div>
+            <span class="lab">${GIORNI_B[(daIso(c.d).getDay()+6)%7]}</span></div>`).join("")}
+        </div>
+        <div class="axis"></div>
+        <p class="mini" style="margin:12px 0 0">Numero di persone in turno. La domenica la clinica è chiusa.</p>
+      </div>
+    </section>
+    <section class="panel">
+      <h3>Ore per persona</h3>
+      <table class="dati">
+        <thead><tr><th>Persona</th><th class="num">Giorni</th><th class="num">Ore</th><th class="num">Scarto</th></tr></thead>
+        <tbody>${righe}</tbody>
+      </table>
+      <div class="legenda">${navSett()}</div>
+    </section>
+  </div>
+  <section class="panel" style="margin-top:18px">
+    <h3>Mese per mese <span class="r">tutto il team</span></h3>
+    <table class="dati">
+      <thead><tr><th>Persona</th><th class="num">${Mese(meseOra)}</th><th class="num">${Mese(mesePrima)}</th>
+        <th class="num">Ferie ${OGGI.getFullYear()}</th><th class="num">Permessi h</th></tr></thead>
+      <tbody>${mensili}</tbody>
+    </table>
+  </section>`;
+}
+
+/* =========================================================
+   TEAM
+   ========================================================= */
+function vistaTeam(){
+  const modificabile = ["responsabile","super"].includes(attuale().ruolo);
+  const senzaMansione = S.persone.filter(p=>!p.mansione).length;
+  const righe = S.persone.map(p=>`
+    <div class="riga">
+      <div class="main">
+        <div class="tt">${esc(p.nome)} ${p.responsabile?`<span class="st st-revisione">responsabile turni</span>`:""}</div>
+        <div class="sub">${p.mansione ? esc(p.mansione) : "<em>mansione da definire</em>"} · ${p.oreSett} ore settimanali</div>
+      </div>
+      <div class="az">
+        ${modificabile ? `<button class="btn sm" data-az="mansione" data-p="${p.id}">${p.mansione?"Modifica":"Assegna mansione"}</button>` : ""}
+        ${modificabile && !p.responsabile ? `<button class="btn sm" data-az="fai-resp" data-p="${p.id}">Rendi responsabile</button>` : ""}
+      </div>
+    </div>`).join("");
+
+  const temporanee = Object.entries(S.settimane)
+    .filter(([k,s])=>(s.extra||[]).length)
+    .map(([k,s])=>s.extra.map(e=>`<div class="riga">
+        <div class="main"><div class="tt">${esc(e.nome)}</div><div class="sub">${e.mansione?esc(e.mansione)+" · ":""}solo la settimana ${etichettaSett(k)}</div></div>
+        <div class="az"><span class="st st-revisione">temporanea</span></div></div>`).join("")).join("");
+
+  return `
+  <div class="sect-head">
+    <h2>Team</h2>
+    <p>Le mansioni si modificano qui e cambiano ovunque compaia la persona. Chi c'è solo per una settimana si aggiunge dalla pianificazione.</p>
+  </div>
+  <div class="ground"></div>
+  <div class="stack">
+    ${senzaMansione && modificabile ? `<div class="avviso"><div><div class="eyebrow">Da completare</div>
+      ${senzaMansione} ${senzaMansione===1?"persona non ha":"persone non hanno"} ancora una mansione assegnata.</div></div>` : ""}
+    <section class="panel">
+      <h3>In organico <span class="r">${S.persone.length} persone</span></h3>
+      ${righe}
+      ${modificabile?`<div class="legenda"><button class="btn sm gold" data-az="aggiungi-fisso">+ Aggiungi persona in organico</button>
+        <button class="btn sm" data-az="azzera">Riporta ai dati di esempio</button></div>`:""}
+    </section>
+    <section class="panel">
+      <h3>Presenze temporanee</h3>
+      ${temporanee || `<div class="vuoto-box">Nessuna persona temporanea inserita. Si aggiungono dalla pianificazione, settimana per settimana.</div>`}
+    </section>
+  </div>`;
+}
+
+/* =========================================================
+   ACCESSO
+   ========================================================= */
+function schermataLogin(){
+  return `
+  <div class="accesso"><div class="accesso-box">
+    <h1>Accedi</h1>
+    <p class="intro">Ogni persona entra con il proprio nome utente. Turni, ore, ferie e richieste sono legati all'account.</p>
+    <form class="accesso-card" id="f-login">
+      ${erroreLogin ? `<div class="errore">${esc(erroreLogin)}</div>` : ""}
+      <label class="campo"><span>Nome utente</span>
+        <input id="f-u" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="es. chiara"></label>
+      <label class="campo"><span>Password</span>
+        <input id="f-p" type="password" autocomplete="current-password"></label>
+      <p class="regola">Primo accesso? Lascia questo campo vuoto.</p>
+      <button class="btn gold" type="submit" style="width:100%;margin-top:4px">Entra</button>
+    </form>
+    <p class="accesso-nota">
+      <strong>Utenti previsti:</strong> viviana, chiara, hadir, giacomo, alexander.
+      Al primo accesso la password la scegli tu: lascia il campo vuoto e premi Entra.
+      Va rinnovata ogni ${GIORNI_PASSWORD} giorni.
+      <br><br>
+      <strong>Prototipo.</strong> L'accesso serve a mostrare come funzionerà: qui i dati restano nel browser
+      di chi apre la pagina e non esiste un server che controlli davvero le credenziali.
+      Non usarlo con dati veri del personale finché non c'è quel server.
+    </p>
+  </div></div>`;
+}
+
+function schermataPassword(){
+  const u = utenteInCorso || (sess && sess.utente);
+  const x = utente(u) || {};
+  const titolo = motivoPw==="primo" ? "Scegli la tua password"
+               : motivoPw==="scaduta" ? "La password è scaduta" : "Cambia password";
+  const intro = motivoPw==="primo" ? `Primo accesso di <strong>${esc(u||"")}</strong>. La password resta solo tua: nessun altro la vede, nemmeno chi gestisce i turni.`
+              : motivoPw==="scaduta" ? `Sono passati ${giorniPassword(u)} giorni dall'ultimo cambio. Per continuare serve una password nuova.`
+              : `Stai cambiando la password di <strong>${esc(u||"")}</strong>.`;
+  return `
+  <div class="accesso"><div class="accesso-box">
+    <h1>${titolo}</h1>
+    <p class="intro">${intro}</p>
+    <form class="accesso-card" id="f-pw">
+      ${erroreLogin ? `<div class="errore">${esc(erroreLogin)}</div>` : ""}
+      ${motivoPw!=="primo" && x.hash ? `<label class="campo"><span>Password attuale</span>
+        <input id="f-vecchia" type="password" autocomplete="current-password"></label>` : ""}
+      <label class="campo"><span>Nuova password</span>
+        <input id="f-n1" type="password" autocomplete="new-password"></label>
+      <p class="regola">Almeno 8 caratteri. Diversa dalla precedente.</p>
+      <label class="campo"><span>Ripeti la nuova password</span>
+        <input id="f-n2" type="password" autocomplete="new-password"></label>
+      <div class="btnrow" style="margin-top:4px">
+        <button class="btn gold" type="submit">Salva la password</button>
+        ${motivoPw==="scelta" ? `<button class="btn" type="button" data-az="annulla-pw">Annulla</button>` : ""}
+        ${motivoPw!=="scelta" ? `<button class="btn" type="button" data-az="esci">Esci</button>` : ""}
+      </div>
+    </form>
+  </div></div>`;
+}
+
+function legaLogin(){
+  const f = document.getElementById("f-login");
+  if(f) f.onsubmit = async e => {
+    e.preventDefault();
+    const u = (document.getElementById("f-u").value||"").trim().toLowerCase();
+    const pw = document.getElementById("f-p").value;
+    const x = utente(u);
+    if(!x){ erroreLogin = "Nome utente o password non corretti."; render(); return; }
+    if(!x.hash){ utenteInCorso = u; motivoPw = "primo"; erroreLogin = ""; schermata = "password"; render(); return; }
+    const h = await impronta(pw, x.salt);
+    if(h !== x.hash){ erroreLogin = "Nome utente o password non corretti."; render(); return; }
+    erroreLogin = ""; entra(u); render();
+    avviso(x.ruolo==="super" ? "Accesso SuperUser" : `Accesso di ${x.nome}`);
+  };
+  const g = document.getElementById("f-pw");
+  if(g) g.onsubmit = async e => {
+    e.preventDefault();
+    const u = utenteInCorso || (sess && sess.utente);
+    const x = utente(u);
+    const v = document.getElementById("f-vecchia");
+    const n1 = document.getElementById("f-n1").value;
+    const n2 = document.getElementById("f-n2").value;
+    if(v && x.hash){
+      const hv = await impronta(v.value, x.salt);
+      if(hv !== x.hash){ erroreLogin = "La password attuale non è corretta."; render(); return; }
+    }
+    if(n1.length < 8){ erroreLogin = "La nuova password deve avere almeno 8 caratteri."; render(); return; }
+    if(n1 !== n2){ erroreLogin = "Le due password non coincidono."; render(); return; }
+    const salt = sale();
+    const h = await impronta(n1, salt);
+    if(h === x.hash){ erroreLogin = "La nuova password deve essere diversa dalla precedente."; render(); return; }
+    x.salt = salt; x.hash = h; x.impostataIl = new Date().toISOString();
+    salva(); erroreLogin = "";
+    if(!sess || sess.utente !== u) entra(u);
+    schermata = "app";
+    if(!schede().some(k=>k.k===vista)) vista = schede()[0].k;
+    render(); avviso("Password aggiornata");
+  };
+}
+
+/* =========================================================
+   SUPERUSER
+   ========================================================= */
+function vistaSuper(){
+  const righe = Object.entries(S.utenti).map(([u,x])=>{
+    const g = giorniPassword(u);
+    const stato = !x.hash ? `<span class="st st-attesa">da impostare</span>`
+      : passwordScaduta(u) ? `<span class="st st-no">scaduta</span>`
+      : `<span class="st st-ok">valida</span>`;
+    return `<tr>
+      <td>${esc(u)}${u===SUPERUSER?` <span class="mini">(nascosto)</span>`:""}</td>
+      <td>${esc(x.nome)}</td>
+      <td>${esc({dipendente:"Dipendente",responsabile:"Shift Management",owner:"Last Check",super:"SuperUser"}[x.ruolo]||x.ruolo)}</td>
+      <td>${stato}</td>
+      <td class="num">${g===null?"—":GIORNI_PASSWORD-g}</td>
+      <td><button class="btn sm" data-az="azzera-pw" data-u="${esc(u)}">Azzera</button></td>
+    </tr>`;
+  }).join("");
+  return `
+  <div class="sect-head">
+    <h2>Diagnostica</h2>
+    <p>Vista completa: stato degli accessi, richieste, dati. Con il menu in alto puoi guardare l'applicazione con gli occhi di chiunque.</p>
+  </div>
+  <div class="ground"></div>
+  <div class="stack">
+    <div class="avviso"><div>
+      <div class="eyebrow">Attenzione</div>
+      Questo accesso vede tutto e non compare in nessun elenco. In un sistema vero andrebbe usato solo per manutenzione, con la password custodita nel gestore password e ogni accesso registrato.
+    </div></div>
+    <section class="panel">
+      <h3>Accessi <span class="r">${Object.keys(S.utenti).length} utenti</span></h3>
+      <table class="dati">
+        <thead><tr><th>Utente</th><th>Nome</th><th>Ruolo</th><th>Password</th><th class="num">Giorni alla scadenza</th><th></th></tr></thead>
+        <tbody>${righe}</tbody>
+      </table>
+      <div class="legenda"><span class="mini">«Azzera» riporta l'utente al primo accesso: alla prossima entrata sceglie una password nuova.</span></div>
+    </section>
+    <section class="panel">
+      <h3>Tutte le richieste <span class="r">${S.richieste.length}</span></h3>
+      ${S.richieste.map(r=>rigaRichiesta(r,false)).join("") || `<div class="vuoto-box">Nessuna richiesta.</div>`}
+    </section>
+    <section class="panel">
+      <h3>Dati</h3>
+      <table class="dati">
+        <tbody>
+          <tr><td>Persone in organico</td><td class="num">${S.persone.length}</td></tr>
+          <tr><td>Turni registrati</td><td class="num">${S.turni.length}</td></tr>
+          <tr><td>Settimane in archivio</td><td class="num">${Object.keys(S.settimane).length}</td></tr>
+          <tr><td>Versione dei dati</td><td class="num">${S.versione}</td></tr>
+        </tbody>
+      </table>
+      <div class="legenda"><button class="btn sm no" data-az="azzera">Riporta tutto ai dati di esempio</button></div>
+    </section>
+  </div>`;
+}
+
+/* =========================================================
+   FINESTRE
+   ========================================================= */
+function apri(html, dopo){
+  const v = document.createElement("div");
+  v.className="velo";
+  v.innerHTML = `<div class="modale" role="dialog" aria-modal="true">${html}</div>`;
+  document.body.appendChild(v);
+  modale = v;
+  v.addEventListener("click", e=>{ if(e.target===v) chiudi(); });
+  v.querySelectorAll("[data-chiudi]").forEach(b=>b.onclick=chiudi);
+  if(dopo) dopo(v);
+  const f = v.querySelector("input,select,textarea"); if(f) f.focus();
+}
+function chiudi(){ if(modale){ modale.remove(); modale=null; } }
+document.addEventListener("keydown", e=>{ if(e.key==="Escape") chiudi(); });
+
+function modCella(pid, data){
+  const t = turnoIn(pid,data);
+  const opzioni = Object.entries(TIPI).map(([k,v])=>
+    `<option value="${k}"${t&&t.tipo===k?" selected":""}>${v.nome}${v.lavoro?` (${v.inizio}–${v.fine})`:""}</option>`).join("");
+  apri(`
+    <h3>${esc(nomeDi(pid))} · ${dataLunga(data)} <button data-chiudi aria-label="Chiudi">×</button></h3>
+    <div class="corpo">
+      <label class="campo"><span>Turno</span><select id="f-tipo">${opzioni}</select></label>
+      <div class="duo">
+        <label class="campo"><span>Dalle</span><input id="f-in" type="time" value="${t&&TIPI[t.tipo].lavoro?TIPI[t.tipo].inizio:"09:00"}"></label>
+        <label class="campo"><span>Alle</span><input id="f-fi" type="time" value="${t&&TIPI[t.tipo].lavoro?TIPI[t.tipo].fine:"18:00"}"></label>
+      </div>
+      <label class="campo"><span>Nota (facoltativa)</span><input id="f-nota" type="text" value="${t?esc(t.nota||""):""}" placeholder="es. copre l'ambulatorio 3"></label>
+    </div>
+    <div class="piede">
+      ${t?`<button class="btn no" id="f-togli">Togli il turno</button>`:""}
+      <button class="btn" data-chiudi>Annulla</button>
+      <button class="btn gold" id="f-ok">Salva</button>
+    </div>`, v=>{
+    const selTipo = v.querySelector("#f-tipo");
+    const orari = ()=>{ const T=TIPI[selTipo.value];
+      v.querySelector("#f-in").closest(".duo").style.display = T.lavoro || selTipo.value==="PR" ? "grid" : "none";
+      if(T.lavoro){ v.querySelector("#f-in").value=T.inizio; v.querySelector("#f-fi").value=T.fine; } };
+    selTipo.onchange = orari; orari();
+    v.querySelector("#f-ok").onclick = ()=>{
+      const tipo = selTipo.value;
+      const i = v.querySelector("#f-in").value, f = v.querySelector("#f-fi").value;
+      let ore = null;
+      if(TIPI[tipo].lavoro || tipo==="PR"){
+        const [ih,im]=i.split(":").map(Number), [fh,fm]=f.split(":").map(Number);
+        ore = Math.max(0, (fh*60+fm-ih*60-im)/60);
+        if(tipo!=="PR") ore = Math.max(0, ore - (TIPI[tipo].pausa||0));
+      }
+      const nota = v.querySelector("#f-nota").value.trim();
+      if(t){ t.tipo=tipo; t.ore=ore; t.nota=nota; }
+      else S.turni.push({id:id(), persona:pid, data, tipo, ore, nota});
+      salva(); chiudi(); render(); avviso("Turno aggiornato");
+    };
+    if(t) v.querySelector("#f-togli").onclick = ()=>{
+      S.turni = S.turni.filter(x=>x.id!==t.id); salva(); chiudi(); render(); avviso("Turno rimosso");
+    };
+  });
+}
+
+function modCambio(){
+  const pid = ruolo;
+  const k = settCorrente;
+  const miei = S.turni.filter(t=>t.persona===pid && daIso(t.data)>=OGGI && TIPI[t.tipo].lavoro)
+                      .sort((a,b)=>a.data.localeCompare(b.data)).slice(0,14);
+  if(!miei.length){ avviso("Non hai turni futuri da scambiare"); return; }
+  apri(`
+    <h3>Chiedi un cambio turno <button data-chiudi aria-label="Chiudi">×</button></h3>
+    <div class="corpo">
+      <label class="campo"><span>Quale turno</span><select id="f-t">
+        ${miei.map(t=>`<option value="${t.id}">${dataLunga(t.data)} · ${TIPI[t.tipo].nome} ${orarioTurno(t)}</option>`).join("")}
+      </select></label>
+      <label class="campo"><span>Con chi</span><select id="f-v">
+        ${S.persone.filter(p=>p.id!==pid).map(p=>`<option value="${p.id}">${esc(p.nome)}</option>`).join("")}
+      </select></label>
+      <label class="campo"><span>Motivo</span><textarea id="f-m" placeholder="Serve a chi approva per decidere in fretta"></textarea></label>
+    </div>
+    <div class="piede"><button class="btn" data-chiudi>Annulla</button><button class="btn gold" id="f-ok">Invia a ${esc(nomeResp())}</button></div>`,
+  v=>{
+    v.querySelector("#f-ok").onclick = ()=>{
+      const t = S.turni.find(x=>x.id===v.querySelector("#f-t").value);
+      S.richieste.unshift({id:id(), tipo:"cambio", da:pid, turno:t.id, data:t.data,
+        verso:v.querySelector("#f-v").value, messaggio:v.querySelector("#f-m").value.trim(),
+        stato:"in_attesa", creata:iso(OGGI), decisione:null});
+      salva(); chiudi(); render(); avviso("Richiesta inviata");
+    };
+  });
+}
+
+function modFerie(){
+  const pid = ruolo;
+  const d1 = iso(piuGiorni(lunedi(OGGI),14));
+  apri(`
+    <h3>Richiesta di ferie <button data-chiudi aria-label="Chiudi">×</button></h3>
+    <div class="corpo">
+      <div class="duo">
+        <label class="campo"><span>Dal</span><input id="f-d1" type="date" value="${d1}"></label>
+        <label class="campo"><span>Al</span><input id="f-d2" type="date" value="${iso(piuGiorni(daIso(d1),4))}"></label>
+      </div>
+      <p class="mini" id="f-conto" style="margin:-4px 0 12px"></p>
+      <label class="campo"><span>Motivo (facoltativo)</span><textarea id="f-m"></textarea></label>
+      <div class="avviso"><div>Residuo attuale: <strong>${FERIE_ANNUE-ferieUsate(pid)} giorni</strong> su ${FERIE_ANNUE}.</div></div>
+    </div>
+    <div class="piede"><button class="btn" data-chiudi>Annulla</button><button class="btn gold" id="f-ok">Invia a ${esc(nomeResp())}</button></div>`,
+  v=>{
+    const conta = ()=>{
+      const a=v.querySelector("#f-d1").value, b=v.querySelector("#f-d2").value;
+      if(!a||!b||b<a){ v.querySelector("#f-conto").textContent="Controlla le date."; return 0; }
+      let n=0; for(let d=daIso(a); iso(d)<=b; d=piuGiorni(d,1)) if(d.getDay()!==0) n++;
+      v.querySelector("#f-conto").textContent = `${n} giorni lavorativi · residuo dopo l'approvazione ${FERIE_ANNUE-ferieUsate(pid)-n}`;
+      return n;
+    };
+    v.querySelector("#f-d1").oninput = conta; v.querySelector("#f-d2").oninput = conta; conta();
+    v.querySelector("#f-ok").onclick = ()=>{
+      const a=v.querySelector("#f-d1").value, b=v.querySelector("#f-d2").value;
+      if(!a||!b||b<a){ avviso("Controlla le date"); return; }
+      S.richieste.unshift({id:id(), tipo:"ferie", da:pid, dal:a, al:b,
+        messaggio:v.querySelector("#f-m").value.trim(), stato:"in_attesa", creata:iso(OGGI), decisione:null});
+      salva(); chiudi(); render(); avviso("Richiesta inviata");
+    };
+  });
+}
+
+function modPermesso(){
+  const pid = ruolo;
+  apri(`
+    <h3>Richiesta di permesso <button data-chiudi aria-label="Chiudi">×</button></h3>
+    <div class="corpo">
+      <label class="campo"><span>Giorno</span><input id="f-d" type="date" value="${iso(piuGiorni(OGGI,7))}"></label>
+      <div class="duo">
+        <label class="campo"><span>Dalle</span><input id="f-i" type="time" value="09:00"></label>
+        <label class="campo"><span>Alle</span><input id="f-f" type="time" value="12:00"></label>
+      </div>
+      <label class="campo"><span>Motivo</span><textarea id="f-m"></textarea></label>
+      <div class="avviso"><div>Permessi residui: <strong>${nOre(PERMESSI_ANNUI-permessiUsati(pid))} ore</strong> su ${PERMESSI_ANNUI}.</div></div>
+    </div>
+    <div class="piede"><button class="btn" data-chiudi>Annulla</button><button class="btn gold" id="f-ok">Invia a ${esc(nomeResp())}</button></div>`,
+  v=>{
+    v.querySelector("#f-ok").onclick = ()=>{
+      const d=v.querySelector("#f-d").value, i=v.querySelector("#f-i").value, f=v.querySelector("#f-f").value;
+      const [ih,im]=i.split(":").map(Number), [fh,fm]=f.split(":").map(Number);
+      const ore = Math.max(0,(fh*60+fm-ih*60-im)/60);
+      if(!d||!ore){ avviso("Controlla data e orari"); return; }
+      S.richieste.unshift({id:id(), tipo:"permesso", da:pid, data:d, dalle:i, alle:f, ore,
+        messaggio:v.querySelector("#f-m").value.trim(), stato:"in_attesa", creata:iso(OGGI), decisione:null});
+      salva(); chiudi(); render(); avviso("Richiesta inviata");
+    };
+  });
+}
+
+function modDecidi(rid, approva){
+  const r = S.richieste.find(x=>x.id===rid);
+  if(!r) return;
+  apri(`
+    <h3>${approva?"Approva":"Rifiuta"} la richiesta <button data-chiudi aria-label="Chiudi">×</button></h3>
+    <div class="corpo">
+      <p style="margin:0 0 12px">${esc(nomeDi(r.da))} · ${r.tipo==="ferie"?`ferie dal ${dataBreve(r.dal)} al ${dataBreve(r.al)}`:r.tipo==="cambio"?`cambio turno del ${dataBreve(r.data)} con ${esc(nomeDi(r.verso))}`:`permesso del ${dataBreve(r.data)}, ${r.dalle}–${r.alle}`}</p>
+      ${r.messaggio?`<div class="riga" style="padding:0;border:0"><div class="note" style="margin:0">${esc(r.messaggio)}</div></div>`:""}
+      <label class="campo" style="margin-top:14px"><span>Nota per ${esc(nomeDi(r.da))}</span><textarea id="f-n" placeholder="${approva?"es. va bene, avvisa la reception":"es. quella settimana siamo scoperti, proviamo la successiva"}"></textarea></label>
+    </div>
+    <div class="piede"><button class="btn" data-chiudi>Annulla</button>
+      <button class="btn ${approva?"ok":"no"}" id="f-ok">${approva?"Approva":"Rifiuta"}</button></div>`,
+  v=>{
+    v.querySelector("#f-ok").onclick = ()=>{
+      r.stato = approva?"approvata":"rifiutata";
+      r.decisione = {da:nomeResp(), quando:iso(OGGI), nota:v.querySelector("#f-n").value.trim()};
+      if(approva) applica(r);
+      salva(); chiudi(); render();
+      avviso(approva?"Richiesta approvata, calendario aggiornato":"Richiesta rifiutata");
+    };
+  });
+}
+
+function applica(r){
+  if(r.tipo==="ferie"){
+    for(let d=daIso(r.dal); iso(d)<=r.al; d=piuGiorni(d,1)){
+      if(d.getDay()===0) continue;
+      const g = iso(d);
+      const t = turnoIn(r.da,g);
+      if(t){ t.tipo="F"; t.ore=0; }
+      else S.turni.push({id:id(), persona:r.da, data:g, tipo:"F", ore:0, nota:""});
+      assicuraSett(chiaveSett(d));
+    }
+  } else if(r.tipo==="permesso"){
+    const t = turnoIn(r.da,r.data);
+    if(t){ t.nota = `permesso ${r.dalle}–${r.alle}`; }
+    S.turni.push({id:id(), persona:r.da, data:r.data, tipo:"PR", ore:r.ore, nota:""});
+    assicuraSett(chiaveSett(daIso(r.data)));
+  } else if(r.tipo==="cambio"){
+    const t = S.turni.find(x=>x.id===r.turno) || turnoIn(r.da, r.data);
+    if(t){ t.persona = r.verso; t.nota = `cambio da ${nomeDi(r.da)}`; }
+  }
+}
+
+function modMansione(pid){
+  const p = S.persone.find(x=>x.id===pid) || (function(){
+    for(const k in S.settimane){ const e=(S.settimane[k].extra||[]).find(x=>x.id===pid); if(e) return e; }
+  })();
+  if(!p) return;
+  apri(`
+    <h3>Mansione di ${esc(p.nome)} <button data-chiudi aria-label="Chiudi">×</button></h3>
+    <div class="corpo">
+      <label class="campo"><span>Mansione</span><input id="f-m" type="text" value="${esc(p.mansione||"")}" placeholder="es. capo studio, infermiera, reception"></label>
+      ${p.oreSett!==undefined?`<label class="campo"><span>Ore settimanali da contratto</span><input id="f-o" type="number" min="0" max="48" step="1" value="${p.oreSett}"></label>`:""}
+    </div>
+    <div class="piede"><button class="btn" data-chiudi>Annulla</button><button class="btn gold" id="f-ok">Salva</button></div>`,
+  v=>{
+    v.querySelector("#f-ok").onclick = ()=>{
+      p.mansione = v.querySelector("#f-m").value.trim();
+      const o = v.querySelector("#f-o"); if(o) p.oreSett = Number(o.value)||0;
+      salva(); chiudi(); render(); avviso("Mansione aggiornata");
+    };
+  });
+}
+
+function modPersona(temporanea){
+  apri(`
+    <h3>${temporanea?"Persona solo per questa settimana":"Nuova persona in organico"} <button data-chiudi aria-label="Chiudi">×</button></h3>
+    <div class="corpo">
+      <label class="campo"><span>Nome</span><input id="f-n" type="text" placeholder="Nome e cognome"></label>
+      <label class="campo"><span>Mansione</span><input id="f-m" type="text" placeholder="es. infermiera in sostituzione"></label>
+      ${temporanea?`<div class="avviso"><div>Comparirà solo nella settimana ${etichettaSett(settCorrente)} e non entra nei saldi ferie.</div></div>`
+        :`<label class="campo"><span>Ore settimanali</span><input id="f-o" type="number" value="40" min="0" max="48"></label>`}
+    </div>
+    <div class="piede"><button class="btn" data-chiudi>Annulla</button><button class="btn gold" id="f-ok">Aggiungi</button></div>`,
+  v=>{
+    v.querySelector("#f-ok").onclick = ()=>{
+      const n = v.querySelector("#f-n").value.trim();
+      if(!n){ avviso("Serve almeno il nome"); return; }
+      const m = v.querySelector("#f-m").value.trim();
+      if(temporanea){
+        const s = assicuraSett(settCorrente);
+        s.extra = s.extra || [];
+        s.extra.push({id:id(), nome:n, mansione:m, oreSett:0});
+      } else {
+        S.persone.push({id:id(), nome:n, mansione:m, oreSett:Number((v.querySelector("#f-o")||{}).value)||38, responsabile:false, fisso:true});
+      }
+      salva(); chiudi(); render(); avviso(`${n} aggiunta`);
+    };
+  });
+}
+
+function modVisto(){
+  const s = assicuraSett(settCorrente);
+  apri(`
+    <h3>Settimana ${etichettaSett(settCorrente)} <button data-chiudi aria-label="Chiudi">×</button></h3>
+    <div class="corpo">
+      <p style="margin:0 0 12px;color:var(--ink-2);font-size:13.5px">${esc(nomeResp())} vedrà che hai fatto il last check, con la nota se la scrivi.</p>
+      <label class="campo"><span>Nota (facoltativa)</span><textarea id="f-n" placeholder="es. giovedì mattina serve una persona in più">${s.vistoOwner&&s.vistoOwner.nota?esc(s.vistoOwner.nota):""}</textarea></label>
+    </div>
+    <div class="piede"><button class="btn" data-chiudi>Annulla</button><button class="btn gold" id="f-ok">Conferma</button></div>`,
+  v=>{
+    v.querySelector("#f-ok").onclick = ()=>{
+      s.vistoOwner = {da:"Alexander", quando:iso(OGGI), nota:v.querySelector("#f-n").value.trim()};
+      salva(); chiudi(); render(); avviso("Last check registrato");
+    };
+  });
+}
+
+/* =========================================================
+   AZIONI
+   ========================================================= */
+function azione(el){
+  const a = el.dataset.az;
+  switch(a){
+    case "sett-prec": settCorrente = chiaveSett(piuGiorni(daIso(settCorrente),-7)); render(); break;
+    case "sett-succ": settCorrente = chiaveSett(piuGiorni(daIso(settCorrente),7)); render(); break;
+    case "sett-oggi": settCorrente = chiaveSett(OGGI); render(); break;
+    case "cella": modCella(el.dataset.p, el.dataset.d); break;
+    case "nuovo-cambio": modCambio(); break;
+    case "nuove-ferie": modFerie(); break;
+    case "nuovo-permesso": modPermesso(); break;
+    case "approva": modDecidi(el.dataset.id, true); break;
+    case "rifiuta": modDecidi(el.dataset.id, false); break;
+    case "mansione": modMansione(el.dataset.p); break;
+    case "aggiungi-persona": modPersona(true); break;
+    case "aggiungi-fisso": modPersona(false); break;
+    case "visto": modVisto(); break;
+    case "azzera": azzera(); break;
+    case "esci": esci(); break;
+    case "cambia-pw":
+      motivoPw = "scelta"; utenteInCorso = sess.utente; erroreLogin = ""; schermata = "password"; render(); break;
+    case "annulla-pw":
+      erroreLogin = ""; schermata = "app"; render(); break;
+    case "azzera-pw": {
+      const x = utente(el.dataset.u);
+      if(x){ x.hash=null; x.salt=null; x.impostataIl=null; salva(); render();
+        avviso(`${el.dataset.u}: password azzerata, la sceglierà al prossimo accesso`); }
+      break;
+    }
+    case "fai-resp":
+      S.persone.forEach(p=>p.responsabile = p.id===el.dataset.p);
+      salva(); render(); avviso(`${nomeDi(el.dataset.p)} è ora responsabile dei turni`); break;
+    case "in-revisione":
+      assicuraSett(settCorrente).stato = "in_revisione";
+      assicuraSett(settCorrente).vistoOwner = null;
+      salva(); render(); avviso("Mandata ad Alexander per il last check"); break;
+    case "pubblica":
+      assicuraSett(settCorrente).stato = "pubblicata";
+      salva(); render(); avviso("Settimana pubblicata, il team la vede"); break;
+    case "in-bozza":
+      assicuraSett(settCorrente).stato = "bozza";
+      salva(); render(); avviso("Riportata in bozza"); break;
+    case "copia-settimana": {
+      const prec = chiaveSett(piuGiorni(daIso(settCorrente),-7));
+      const gp = giorniSett(prec), gc = giorniSett(settCorrente);
+      let n = 0;
+      personeSett(settCorrente).forEach(p=>{
+        gp.forEach((d,i)=>{
+          const t = turnoIn(p.id,d);
+          if(t && !turnoIn(p.id,gc[i]) && t.tipo!=="F" && t.tipo!=="PR"){
+            S.turni.push({id:id(), persona:p.id, data:gc[i], tipo:t.tipo, ore:t.ore, nota:""}); n++;
+          }
+        });
+      });
+      salva(); render(); avviso(n?`${n} turni copiati`:"Niente da copiare"); break;
+    }
+  }
+}
+
+/* =========================================================
+   RENDER
+   ========================================================= */
+function render(){
+  const app = document.getElementById("app");
+  const nav = document.querySelector("nav.tabs");
+  disegnaUtente();
+
+  if(schermata !== "app"){
+    nav.hidden = true;
+    app.innerHTML = schermata==="login" ? schermataLogin() : schermataPassword();
+    app.querySelectorAll("[data-az]").forEach(el=> el.onclick = ()=>azione(el));
+    legaLogin();
+    const primo = app.querySelector("input");
+    if(primo) primo.focus();
+    return;
+  }
+
+  nav.hidden = false;
+  const a = attuale();
+  ruolo = a.personaId || "p1";
+  const permesse = schede().map(x=>x.k);
+  if(!permesse.includes(vista)) vista = permesse[0];
+  disegnaSchede();
+  const viste = {
+    mia:vistaMia, ore:vistaOre, ferie:vistaFerie, richieste:vistaRichieste, settimana:vistaSettimanaTeam,
+    pianifica:vistaPianifica, approva:vistaApprova, assenze:vistaAssenze, team:vistaTeam,
+    owner:vistaOwner, copertura:vistaCopertura, super:vistaSuper
+  };
+  app.innerHTML = (viste[vista] || vistaMia)();
+  app.querySelectorAll("[data-az]").forEach(el=> el.onclick = ()=>azione(el));
+  window.scrollTo({top:0, behavior:"instant"});
+}
+
+disegnaRitmo();
+S = carica();
+if(!S.utenti) S = semi();
+document.getElementById("salvataggio").textContent = "Le modifiche restano su questo dispositivo";
+try{
+  const u = sessionStorage.getItem("rc_sess");
+  if(u && utente(u) && utente(u).hash) entra(u);
+}catch(e){}
+render();
+</script>
+
+</body></html>
