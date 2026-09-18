@@ -1,6 +1,14 @@
 <!doctype html>
-<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow"><style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#1F1D1B">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icona-180.png">
+<link rel="icon" href="icona-192.png" sizes="192x192">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Turni">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Turni Rossi Clinic</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -359,10 +367,36 @@ table.dati tr:last-child td{border-bottom:0}
   max-width:1180px;margin:0 auto;padding:22px 20px 40px;color:var(--ink-3);font-size:12.5px;
   border-top:1px solid var(--line);display:flex;gap:14px;flex-wrap:wrap;justify-content:space-between;
 }
+/* ---------- stampa (PDF) ---------- */
+.esporta-riga{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px}
+#stampa{display:none}
+@media print{
+  body>*{display:none !important}
+  body>#stampa{display:block !important}
+  @page{size:A4 portrait;margin:14mm}
+  body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .pt-doc{font-family:Inter,system-ui,sans-serif;color:#1F1D1B;font-size:11.5px;line-height:1.45}
+  .pt-top{border-bottom:2px solid #C0A35F;padding-bottom:9px;margin-bottom:16px}
+  .pt-marchio{font-family:Jost,Inter,sans-serif;letter-spacing:.24em;font-size:10.5px;color:#C0A35F;text-transform:uppercase}
+  .pt-tit{font-family:Jost,Inter,sans-serif;font-size:19px;font-weight:500;margin-top:7px}
+  .pt-sot{font-size:11px;color:#6E6862;margin-top:3px}
+  .pt-h{font-family:Jost,Inter,sans-serif;font-size:13px;font-weight:500;margin:18px 0 2px}
+  .pt-tab{width:100%;border-collapse:collapse;margin:8px 0 6px;font-size:11px}
+  .pt-tab th,.pt-tab td{border-bottom:1px solid #E6DFD6;padding:5px 7px;text-align:left;vertical-align:top}
+  .pt-tab thead th{border-bottom:1px solid #1F1D1B;font-size:9.5px;text-transform:uppercase;letter-spacing:.09em;color:#6E6862;font-weight:500}
+  .pt-tab tfoot th{border-top:1px solid #1F1D1B;border-bottom:none;font-size:11px}
+  .pt-tab .num{text-align:right;white-space:nowrap}
+  .pt-tab tr{break-inside:avoid}
+  .pt-tiles{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 4px}
+  .pt-tile{border:1px solid #E6DFD6;border-radius:6px;padding:7px 11px;min-width:104px}
+  .pt-tile .k{font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:#6E6862}
+  .pt-tile .v{font-family:Jost,Inter,sans-serif;font-size:17px;font-weight:500;margin-top:2px}
+  .pt-tile .n{font-size:9.5px;color:#6E6862}
+  .pt-nota{font-size:10px;color:#6E6862;margin:2px 0 0}
+  .pt-pie{margin-top:20px;border-top:1px solid #E6DFD6;padding-top:6px;font-size:9.5px;color:#6E6862}
+}
 </style>
 
-</head>
-<body>
 <header class="top">
   <div class="top-in">
     <div class="mark">
@@ -384,6 +418,7 @@ table.dati tr:last-child td{border-bottom:0}
   <span>Prototipo · Rossi Clinic STP S.r.l. · dati di esempio, nessun dato reale del personale</span>
   <span id="salvataggio">—</span>
 </footer>
+<div id="stampa" aria-hidden="true"></div>
 
 <script>
 /* =========================================================
@@ -393,10 +428,10 @@ table.dati tr:last-child td{border-bottom:0}
 
 /* ---------- costanti ---------- */
 const TIPI = {
-  M : {nome:"Apertura",   inizio:"09:00", fine:"18:00", pausa:1, ore:8, lavoro:true, nota:"pausa 12:00–13:00"},
-  P : {nome:"Chiusura",   inizio:"12:00", fine:"20:00", pausa:0, ore:8, lavoro:true},
-  S : {nome:"Assistenza", inizio:"08:00", fine:"14:00", pausa:0, ore:6, lavoro:true},
-  SW: {nome:"Smart",      inizio:"09:00", fine:"18:00", pausa:1, ore:8, lavoro:true, nota:"pausa 12:00–13:00"},
+  M : {nome:"Apertura",   inizio:"09:00", fine:"18:00", pausaDa:"12:00", pausaA:"13:00", ore:8, lavoro:true},
+  P : {nome:"Chiusura",   inizio:"12:00", fine:"20:00", pausaDa:"",      pausaA:"",      ore:8, lavoro:true},
+  S : {nome:"Assistenza", inizio:"08:00", fine:"14:00", pausaDa:"",      pausaA:"",      ore:6, lavoro:true},
+  SW: {nome:"Smart",      inizio:"09:00", fine:"18:00", pausaDa:"12:00", pausaA:"13:00", ore:8, lavoro:true},
   R : {nome:"Riposo",     ore:0, lavoro:false},
   F : {nome:"Ferie",      ore:0, lavoro:false},
   PR: {nome:"Permesso",   ore:0, lavoro:false}
@@ -426,6 +461,28 @@ function etichettaSett(k){
 }
 function dataBreve(s){ const d=daIso(s); return `${d.getDate()} ${Mese(d.getMonth()).slice(0,3)}`; }
 function dataLunga(s){ const d=daIso(s); return `${GIORNI[(d.getDay()+6)%7]} ${d.getDate()} ${Mese(d.getMonth())}`; }
+function minuti(o){ if(!o) return null; const [h,m]=o.split(":").map(Number); return h*60+m; }
+/** Ore effettive: durata del turno meno la pausa, se la pausa cade dentro il turno. */
+function oreNette(inizio, fine, pausaDa, pausaA){
+  const i = minuti(inizio), f = minuti(fine);
+  if(i===null || f===null) return 0;
+  let durata = f - i; if(durata < 0) durata += 1440;          // turno a cavallo della mezzanotte
+  const pa = minuti(pausaDa), pb = minuti(pausaA);
+  let pausa = 0;
+  if(pa!==null && pb!==null && pb > pa) pausa = Math.min(pb - pa, durata);
+  return Math.max(0, Math.round(((durata - pausa) / 60) * 100) / 100);
+}
+/** La pausa del turno, o quella predefinita del tipo. */
+function pausaDi(t){
+  if(!t) return {da:"", a:""};
+  if(t.pausaDa !== undefined) return {da:t.pausaDa || "", a:t.pausaA || ""};
+  const T = TIPI[t.tipo] || {};
+  return {da:T.pausaDa || "", a:T.pausaA || ""};
+}
+function testoPausa(t){
+  const p = pausaDi(t);
+  return p.da && p.a ? `pausa ${p.da}–${p.a}` : "";
+}
 function nOre(n){ return Number(n).toLocaleString("it-IT",{maximumFractionDigits:1}); }
 
 /* ---------- stato ---------- */
@@ -440,6 +497,17 @@ let erroreLogin = "";
 let utenteInCorso = null;
 const GIORNI_PASSWORD = 90;
 const SUPERUSER = "superuser";
+const PW_MIN = 8;
+const PW_REGOLA = "Almeno 8 caratteri in tutto, fra cui almeno una lettera, almeno un numero e almeno un carattere speciale (es. ! ? # @ - _).";
+function erroriPassword(pw){
+  const mancano = [];
+  if(pw.length < PW_MIN)        mancano.push(`almeno ${PW_MIN} caratteri in tutto`);
+  if(!/[A-Za-zÀ-ÿ]/.test(pw))   mancano.push("una lettera");
+  if(!/[0-9]/.test(pw))         mancano.push("un numero");
+  if(!/[^A-Za-z0-9À-ÿ]/.test(pw)) mancano.push("un carattere speciale");
+  if(!mancano.length) return null;
+  return "Alla password manca " + (mancano.length === 1 ? mancano[0] : mancano.slice(0,-1).join(", ") + " e " + mancano.slice(-1)) + ".";
+}
 let settCorrente = chiaveSett(OGGI);
 let modale = null;
 
@@ -640,7 +708,9 @@ function chipTurno(t){
 function orarioTurno(t){
   if(!t) return "";
   const T = TIPI[t.tipo];
-  return T.lavoro ? `${T.inizio}–${T.fine}` : "";
+  if(!T.lavoro) return "";
+  const da = t.inizio || T.inizio, a = t.fine || T.fine;
+  return `${da}–${a}`;
 }
 function stChip(stato){
   const m = {in_attesa:["st-attesa","In attesa"], approvata:["st-ok","Approvata"], rifiutata:["st-no","Rifiutata"],
@@ -762,7 +832,7 @@ function vistaMia(){
     const t = turnoIn(pid,d), oggi = d===iso(OGGI);
     return `<div class="day${oggi?" oggi":""}">
       <div class="dh"><span class="dn">${GIORNI_B[(daIso(d).getDay()+6)%7]}</span><span class="dd">${daIso(d).getDate()}</span></div>
-      ${t ? `${chipTurno(t)}<div class="orario">${orarioTurno(t)||"&nbsp;"}</div>` : `<div class="vuoto">Riposo</div>`}
+      ${t ? `${chipTurno(t)}<div class="orario">${orarioTurno(t)||"&nbsp;"}</div>${testoPausa(t)?`<div class="mini">${testoPausa(t)}</div>`:""}` : `<div class="vuoto">Riposo</div>`}
     </div>`;
   }).join("");
 
@@ -793,6 +863,8 @@ function vistaMia(){
         <button class="btn sm gold" data-az="nuovo-cambio">Chiedi un cambio turno</button>
         <button class="btn sm" data-az="nuove-ferie">Chiedi ferie</button>
         <button class="btn sm" data-az="nuovo-permesso">Chiedi un permesso</button>
+        <button class="btn sm" data-az="ics">Calendario Apple</button>
+        <button class="btn sm" data-az="pdf-settimana">Esporta in PDF</button>
       </div>
     </section>
 
@@ -830,6 +902,7 @@ function vistaOre(){
     <p>Ore effettivamente a turno. Ferie, permessi e riposi non contano come ore lavorate.</p>
   </div>
   <div class="ground"></div>
+  <div class="esporta-riga"><button class="btn sm gold" data-az="pdf-ore">Esporta in PDF</button></div>
   <div class="cols">
     <section class="panel">
       <h3>Ultime otto settimane <span class="r">contratto ${p.oreSett} h/settimana</span></h3>
@@ -977,7 +1050,7 @@ function griglia(k, editabile){
     const celle = gg.map(d=>{
       const t = turnoIn(p.id,d), oggi = d===iso(OGGI);
       const dentro = t
-        ? `${chipTurno(t)}<span class="hh">${orarioTurno(t)||"&nbsp;"}</span>`
+        ? `${chipTurno(t)}<span class="hh">${orarioTurno(t)||"&nbsp;"}</span>${testoPausa(t)?`<span class="hh" style="color:var(--ink-3);font-size:11px">${testoPausa(t)}</span>`:""}`
         : (editabile ? `<span class="add">+</span>` : `<span class="hh" style="color:var(--ink-3)">riposo</span>`);
       return `<td class="${oggi?"col-oggi":""}">${
         editabile
@@ -1034,7 +1107,7 @@ function vistaPianifica(){
       </div>
       ${griglia(k,true)}
       <div class="legenda">
-        ${Object.keys(TIPI).filter(t=>t!=="R").map(t=>`<span class="chip c-${t}">${TIPI[t].nome}${TIPI[t].lavoro?` ${TIPI[t].inizio}–${TIPI[t].fine}`:""}${TIPI[t].pausa?` · pausa ${TIPI[t].pausa} h`:""}</span>`).join("")}
+        ${Object.keys(TIPI).filter(t=>t!=="R").map(t=>`<span class="chip c-${t}">${TIPI[t].nome}${TIPI[t].lavoro?` ${TIPI[t].inizio}–${TIPI[t].fine}`:""}${TIPI[t].pausaDa?` · pausa ${TIPI[t].pausaDa}–${TIPI[t].pausaA}`:""}</span>`).join("")}
       </div>
     </section>
 
@@ -1075,6 +1148,7 @@ function vistaSettimanaTeam(){
     <h3>Settimana ${etichettaSett(k)} <span class="r">${stChip(st)}</span></h3>
     <div class="pad">${navSett()}</div>
     ${griglia(k,false)}
+    <div class="legenda"><button class="btn sm" data-az="pdf-team">Esporta in PDF</button></div>
   </section>`;
 }
 
@@ -1303,7 +1377,7 @@ function schermataLogin(){
     <p class="accesso-nota">
       <strong>Utenti previsti:</strong> viviana, chiara, hadir, giacomo, alexander.
       Al primo accesso la password la scegli tu: lascia il campo vuoto e premi Entra.
-      Va rinnovata ogni ${GIORNI_PASSWORD} giorni.
+      ${PW_REGOLA} Va rinnovata ogni ${GIORNI_PASSWORD} giorni.
       <br><br>
       <strong>Prototipo.</strong> L'accesso serve a mostrare come funzionerà: qui i dati restano nel browser
       di chi apre la pagina e non esiste un server che controlli davvero le credenziali.
@@ -1330,7 +1404,7 @@ function schermataPassword(){
         <input id="f-vecchia" type="password" autocomplete="current-password"></label>` : ""}
       <label class="campo"><span>Nuova password</span>
         <input id="f-n1" type="password" autocomplete="new-password"></label>
-      <p class="regola">Almeno 8 caratteri. Diversa dalla precedente.</p>
+      <p class="regola">${PW_REGOLA} Diversa dalla precedente.</p>
       <label class="campo"><span>Ripeti la nuova password</span>
         <input id="f-n2" type="password" autocomplete="new-password"></label>
       <div class="btnrow" style="margin-top:4px">
@@ -1368,7 +1442,8 @@ function legaLogin(){
       const hv = await impronta(v.value, x.salt);
       if(hv !== x.hash){ erroreLogin = "La password attuale non è corretta."; render(); return; }
     }
-    if(n1.length < 8){ erroreLogin = "La nuova password deve avere almeno 8 caratteri."; render(); return; }
+    const problema = erroriPassword(n1);
+    if(problema){ erroreLogin = problema; render(); return; }
     if(n1 !== n2){ erroreLogin = "Le due password non coincidono."; render(); return; }
     const salt = sale();
     const h = await impronta(n1, salt);
@@ -1464,8 +1539,15 @@ function modCella(pid, data){
     <div class="corpo">
       <label class="campo"><span>Turno</span><select id="f-tipo">${opzioni}</select></label>
       <div class="duo">
-        <label class="campo"><span>Dalle</span><input id="f-in" type="time" value="${t&&TIPI[t.tipo].lavoro?TIPI[t.tipo].inizio:"09:00"}"></label>
-        <label class="campo"><span>Alle</span><input id="f-fi" type="time" value="${t&&TIPI[t.tipo].lavoro?TIPI[t.tipo].fine:"18:00"}"></label>
+        <label class="campo"><span>Dalle</span><input id="f-in" type="time" value="${t&&TIPI[t.tipo].lavoro?(t.inizio||TIPI[t.tipo].inizio):"09:00"}"></label>
+        <label class="campo"><span>Alle</span><input id="f-fi" type="time" value="${t&&TIPI[t.tipo].lavoro?(t.fine||TIPI[t.tipo].fine):"18:00"}"></label>
+      </div>
+      <div id="f-blocco-pausa">
+        <div class="duo">
+          <label class="campo"><span>Pausa dalle</span><input id="f-pda" type="time" value="${esc(pausaDi(t).da)}"></label>
+          <label class="campo"><span>Pausa alle</span><input id="f-pa" type="time" value="${esc(pausaDi(t).a)}"></label>
+        </div>
+        <p class="regola" id="f-conteggio"></p>
       </div>
       <label class="campo"><span>Nota (facoltativa)</span><input id="f-nota" type="text" value="${t?esc(t.nota||""):""}" placeholder="es. copre l'ambulatorio 3"></label>
     </div>
@@ -1475,22 +1557,53 @@ function modCella(pid, data){
       <button class="btn gold" id="f-ok">Salva</button>
     </div>`, v=>{
     const selTipo = v.querySelector("#f-tipo");
-    const orari = ()=>{ const T=TIPI[selTipo.value];
-      v.querySelector("#f-in").closest(".duo").style.display = T.lavoro || selTipo.value==="PR" ? "grid" : "none";
-      if(T.lavoro){ v.querySelector("#f-in").value=T.inizio; v.querySelector("#f-fi").value=T.fine; } };
-    selTipo.onchange = orari; orari();
+    const cIn = v.querySelector("#f-in"), cFi = v.querySelector("#f-fi");
+    const cPda = v.querySelector("#f-pda"), cPa = v.querySelector("#f-pa");
+    const conteggio = v.querySelector("#f-conteggio");
+
+    const aggiornaConteggio = ()=>{
+      const tipo = selTipo.value;
+      if(!TIPI[tipo].lavoro){ conteggio.textContent = ""; return; }
+      const ore = oreNette(cIn.value, cFi.value, cPda.value, cPa.value);
+      const lorde = oreNette(cIn.value, cFi.value, "", "");
+      const pa = minuti(cPda.value), pb = minuti(cPa.value);
+      const ia = minuti(cIn.value), fa = minuti(cFi.value);
+      let avvertenza = "";
+      if(pa!==null && pb!==null){
+        if(pb <= pa) avvertenza = " ⚠️ la pausa finisce prima di cominciare: non viene tolta.";
+        else if(ia!==null && fa!==null && (pa < ia || pb > fa)) avvertenza = " ⚠️ la pausa cade fuori dall'orario del turno.";
+      }
+      conteggio.innerHTML = `Ore conteggiate: <strong>${nOre(ore)}</strong>`
+        + (lorde > ore ? ` (${nOre(lorde)} meno ${nOre(lorde-ore)} di pausa)` : " (nessuna pausa)")
+        + esc(avvertenza);
+    };
+
+    const orari = ()=>{
+      const T = TIPI[selTipo.value];
+      const lavora = T.lavoro;
+      cIn.closest(".duo").style.display = lavora || selTipo.value==="PR" ? "grid" : "none";
+      v.querySelector("#f-blocco-pausa").style.display = lavora ? "block" : "none";
+      if(lavora){
+        cIn.value = T.inizio; cFi.value = T.fine;
+        cPda.value = T.pausaDa || ""; cPa.value = T.pausaA || "";
+      }
+      aggiornaConteggio();
+    };
+    selTipo.onchange = orari;
+    [cIn, cFi, cPda, cPa].forEach(c => c.oninput = aggiornaConteggio);
+    aggiornaConteggio();
+
     v.querySelector("#f-ok").onclick = ()=>{
       const tipo = selTipo.value;
-      const i = v.querySelector("#f-in").value, f = v.querySelector("#f-fi").value;
+      const i = cIn.value, f = cFi.value;
+      const pda = TIPI[tipo].lavoro ? cPda.value : "", pa = TIPI[tipo].lavoro ? cPa.value : "";
       let ore = null;
-      if(TIPI[tipo].lavoro || tipo==="PR"){
-        const [ih,im]=i.split(":").map(Number), [fh,fm]=f.split(":").map(Number);
-        ore = Math.max(0, (fh*60+fm-ih*60-im)/60);
-        if(tipo!=="PR") ore = Math.max(0, ore - (TIPI[tipo].pausa||0));
-      }
+      if(TIPI[tipo].lavoro)      ore = oreNette(i, f, pda, pa);
+      else if(tipo === "PR")     ore = oreNette(i, f, "", "");
       const nota = v.querySelector("#f-nota").value.trim();
-      if(t){ t.tipo=tipo; t.ore=ore; t.nota=nota; }
-      else S.turni.push({id:id(), persona:pid, data, tipo, ore, nota});
+      const campi = {tipo, ore, nota, inizio:TIPI[tipo].lavoro?i:null, fine:TIPI[tipo].lavoro?f:null, pausaDa:pda, pausaA:pa};
+      if(t) Object.assign(t, campi);
+      else S.turni.push({id:id(), persona:pid, data, ...campi});
       salva(); chiudi(); render(); avviso("Turno aggiornato");
     };
     if(t) v.querySelector("#f-togli").onclick = ()=>{
@@ -1701,6 +1814,274 @@ function modVisto(){
 /* =========================================================
    AZIONI
    ========================================================= */
+/* =========================================================
+   ESPORTAZIONI — calendario (.ics) e PDF (stampa)
+   ========================================================= */
+function dueCifre(n){ return String(n).padStart(2,"0"); }
+function icsData(d){ return d.replace(/-/g,""); }
+function icsOra(d,o){ return icsData(d)+"T"+o.replace(":","")+"00"; }
+function icsEsc(s){ return String(s??"").replace(/\\/g,"\\\\").replace(/;/g,"\;").replace(/,/g,"\\,").replace(/\r?\n/g,"\\n"); }
+function piega(r){
+  if(r.length<=74) return r;
+  let out = r.slice(0,74), resto = r.slice(74);
+  while(resto.length){ out += "\r\n " + resto.slice(0,73); resto = resto.slice(73); }
+  return out;
+}
+function turniDaEsportare(pid, dal, al, conAssenze){
+  return S.turni
+    .filter(t => t.persona===pid && t.data>=dal && t.data<=al &&
+                 (TIPI[t.tipo].lavoro || (conAssenze && (t.tipo==="F" || t.tipo==="PR"))))
+    .sort((a,b)=>a.data.localeCompare(b.data));
+}
+function calendarioIcs(pid, dal, al, conAssenze){
+  const p = per(pid), n = new Date();
+  const bollo = n.getUTCFullYear()+dueCifre(n.getUTCMonth()+1)+dueCifre(n.getUTCDate())+"T"
+              + dueCifre(n.getUTCHours())+dueCifre(n.getUTCMinutes())+dueCifre(n.getUTCSeconds())+"Z";
+  const r = ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Rossi Clinic//Turni//IT","CALSCALE:GREGORIAN","METHOD:PUBLISH",
+             "X-WR-CALNAME:"+icsEsc("Turni "+p.nome+" · Rossi Clinic"),"X-WR-TIMEZONE:Europe/Rome"];
+  turniDaEsportare(pid,dal,al,conAssenze).forEach(t=>{
+    const T = TIPI[t.tipo];
+    r.push("BEGIN:VEVENT");
+    r.push("UID:turno-"+t.id+"@turni.rossiclinic.it");
+    r.push("DTSTAMP:"+bollo);
+    if(T.lavoro){
+      const da = t.inizio || T.inizio, a = t.fine || T.fine;
+      const finisceDopo = minuti(a) <= minuti(da);
+      r.push("DTSTART:"+icsOra(t.data,da));
+      r.push("DTEND:"+icsOra(finisceDopo ? iso(piuGiorni(daIso(t.data),1)) : t.data, a));
+      const pa = testoPausa(t);
+      r.push("DESCRIPTION:"+icsEsc(nOre(oreTurno(t))+" ore"+(pa?" · "+pa:"")+(t.nota?" · "+t.nota:"")));
+    } else {
+      r.push("DTSTART;VALUE=DATE:"+icsData(t.data));
+      r.push("DTEND;VALUE=DATE:"+icsData(iso(piuGiorni(daIso(t.data),1))));
+      if(t.tipo==="PR" && t.ore) r.push("DESCRIPTION:"+icsEsc(nOre(t.ore)+" ore di permesso"));
+    }
+    r.push("SUMMARY:"+icsEsc(T.nome+" · Rossi Clinic"));
+    r.push("LOCATION:"+icsEsc("Rossi Clinic, Bagnarola di Cesenatico"));
+    r.push("END:VEVENT");
+  });
+  r.push("END:VCALENDAR");
+  return r.map(piega).join("\r\n")+"\r\n";
+}
+function scarica(nome, testo, tipo){
+  try{
+    const b = new Blob([testo], {type:tipo+";charset=utf-8"});
+    const u = URL.createObjectURL(b);
+    const a = document.createElement("a");
+    a.href = u; a.download = nome; a.style.display="none";
+    document.body.appendChild(a); a.click();
+    setTimeout(()=>{ URL.revokeObjectURL(u); a.remove(); }, 1500);
+    return true;
+  }catch(e){ return false; }
+}
+function modCalendario(){
+  const pid = ruolo, p = per(pid), k = settCorrente;
+  apri(`
+    <h3>Esporta il calendario <button data-chiudi aria-label="Chiudi">×</button></h3>
+    <div class="corpo">
+      <label class="campo"><span>Periodo</span><select id="f-per">
+        <option value="sett">Solo la settimana ${etichettaSett(k)}</option>
+        <option value="4" selected>Questa settimana e le tre successive</option>
+        <option value="anno">Tutto il ${OGGI.getFullYear()}</option>
+      </select></label>
+      <label class="mini" style="display:flex;gap:8px;align-items:center;margin:-4px 0 12px">
+        <input type="checkbox" id="f-ass" checked> Includi ferie e permessi
+      </label>
+      <p class="mini" id="f-conto" style="margin:0 0 12px"></p>
+      <div class="avviso"><div>Il file è in formato .ics, lo standard dei calendari: si apre con Calendario su iPhone e su Mac, e va bene anche per Google Calendar e Outlook. Su iPhone: scarica il file, poi toccalo e scegli «Aggiungi tutti».<br><br>Se stai guardando questa pagina dentro Claude il download resta bloccato: usa «Copia il testo» e incollalo in un file chiamato <strong>turni.ics</strong>. Dal link condiviso al gruppo si scarica normalmente.</div></div>
+      <label class="campo"><span>Contenuto del file</span><textarea id="f-ics" readonly rows="4" style="font-size:11px"></textarea></label>
+    </div>
+    <div class="piede">
+      <button class="btn" data-chiudi>Chiudi</button>
+      <button class="btn" id="f-copia">Copia il testo</button>
+      <button class="btn gold" id="f-scarica">Scarica il file</button>
+    </div>`,
+  v=>{
+    const agg = ()=>{
+      const scelta = v.querySelector("#f-per").value;
+      const conA = v.querySelector("#f-ass").checked;
+      let dal, al;
+      if(scelta==="sett"){ dal = k; al = giorniSett(k)[6]; }
+      else if(scelta==="4"){ dal = k; al = giorniSett(chiaveSett(piuGiorni(daIso(k),21)))[6]; }
+      else { dal = OGGI.getFullYear()+"-01-01"; al = OGGI.getFullYear()+"-12-31"; }
+      const testo = calendarioIcs(pid, dal, al, conA);
+      const n = (testo.match(/BEGIN:VEVENT/g)||[]).length;
+      v.querySelector("#f-ics").value = testo;
+      v.querySelector("#f-conto").textContent = n
+        ? `${n} voci, dal ${dataBreve(dal)} al ${dataBreve(al)}.`
+        : "In questo periodo non c'è niente da esportare.";
+      return {testo, n};
+    };
+    v.querySelector("#f-per").onchange = agg;
+    v.querySelector("#f-ass").onchange = agg;
+    agg();
+    v.querySelector("#f-scarica").onclick = ()=>{
+      const {testo, n} = agg();
+      if(!n){ avviso("Non c'è niente da esportare"); return; }
+      const nome = "turni-"+p.nome.toLowerCase().replace(/[^a-z0-9]+/g,"-")+"-"+k+".ics";
+      avviso(scarica(nome, testo, "text/calendar")
+        ? "File del calendario pronto"
+        : "Il download non è partito: usa «Copia il testo»");
+    };
+    v.querySelector("#f-copia").onclick = ()=>{
+      const ta = v.querySelector("#f-ics");
+      ta.focus(); ta.select(); ta.setSelectionRange(0, ta.value.length);
+      let ok = false;
+      try{ ok = document.execCommand("copy"); }catch(e){}
+      if(!ok && navigator.clipboard){
+        navigator.clipboard.writeText(ta.value).then(()=>avviso("Testo copiato")).catch(()=>avviso("Copia a mano il testo qui sopra"));
+        return;
+      }
+      avviso(ok ? "Testo copiato" : "Copia a mano il testo qui sopra");
+    };
+  });
+}
+
+/* ---------- PDF: si usa la stampa del browser ---------- */
+function intestazioneStampa(titolo, sotto){
+  return `<header class="pt-top">
+    <div class="pt-marchio">Rossi Clinic</div>
+    <div class="pt-tit">${esc(titolo)}</div>
+    <div class="pt-sot">${esc(sotto)}</div>
+  </header>`;
+}
+function stampa(nomeDoc, html){
+  const box = document.getElementById("stampa");
+  box.innerHTML = `<div class="pt-doc">${html}
+    <footer class="pt-pie">Rossi Clinic STP S.r.l. · documento generato il ${OGGI.getDate()} ${Mese(OGGI.getMonth())} ${OGGI.getFullYear()} · prototipo, dati di esempio</footer></div>`;
+  const titoloPrima = document.title;
+  document.title = nomeDoc;
+  const ripristina = ()=>{ document.title = titoloPrima; window.removeEventListener("afterprint", ripristina); };
+  window.addEventListener("afterprint", ripristina);
+  setTimeout(()=>{
+    try{
+      window.print();
+      avviso("Nella finestra di stampa scegli «Salva come PDF»");
+    }catch(e){
+      ripristina();
+      avviso("La stampa non è disponibile qui: apri la pagina dal link condiviso");
+    }
+  }, 80);
+}
+function oreAnno(pid, anno){ let s=0; for(let m=0;m<12;m++) s+=oreMese(pid,anno,m); return s; }
+
+function stampaSettimana(){
+  const pid = ruolo, p = per(pid), k = settCorrente, gg = giorniSett(k);
+  const righe = gg.map(d=>{
+    const t = turnoIn(pid,d), T = t ? TIPI[t.tipo] : null;
+    return `<tr>
+      <td>${GIORNI[(daIso(d).getDay()+6)%7]} ${daIso(d).getDate()}</td>
+      <td>${t ? esc(T.nome)+(t.tipo==="PR"&&t.ore?` (${nOre(t.ore)} h)`:"") : "Riposo"}</td>
+      <td>${t ? (orarioTurno(t)||"—") : "—"}</td>
+      <td>${(()=>{ if(!t) return "—"; const x=pausaDi(t); return x.da&&x.a ? x.da+"–"+x.a : "—"; })()}</td>
+      <td class="num">${t ? nOre(oreTurno(t)) : "0"}</td></tr>`;
+  }).join("");
+  const ore = oreSett(pid,k), st = statoSett(k);
+  stampa(`Turni ${p.nome} ${k}`,
+    intestazioneStampa(`Turni della settimana ${etichettaSett(k)}`,
+      `${p.nome}${p.mansione?" · "+p.mansione:""} · settimana ${st==="pubblicata"?"pubblicata":(st==="in_revisione"?"in revisione":"in bozza")}`) +
+    `<table class="pt-tab">
+      <thead><tr><th>Giorno</th><th>Turno</th><th>Orario</th><th>Pausa</th><th class="num">Ore</th></tr></thead>
+      <tbody>${righe}</tbody>
+      <tfoot><tr><th colspan="4">Totale della settimana</th><th class="num">${nOre(ore)} / ${p.oreSett}</th></tr></tfoot>
+    </table>
+    <p class="pt-nota">Le ore sono al netto della pausa. Ferie, permessi e riposi non contano come ore lavorate.</p>`);
+}
+
+function stampaOre(){
+  const pid = ruolo, p = per(pid), anno = OGGI.getFullYear();
+  const kOra = chiaveSett(OGGI);
+  const oreS = oreSett(pid,kOra), oreM = oreMese(pid,anno,OGGI.getMonth()), oreA = oreAnno(pid,anno);
+  const attese = p.oreSett*4.33;
+  const sett = [];
+  for(let w=-7; w<=0; w++){ const k = chiaveSett(piuGiorni(lunedi(OGGI), w*7)); sett.push({k, ore:oreSett(pid,k)}); }
+  const mesi = [];
+  for(let m=0; m<=OGGI.getMonth(); m++){
+    const o = oreMese(pid,anno,m);
+    if(o>0 || m===OGGI.getMonth()) mesi.push({m, ore:o});
+  }
+  const ferie = S.turni.filter(t=>t.persona===pid && t.tipo==="F" && daIso(t.data).getFullYear()===anno)
+                       .sort((a,b)=>a.data.localeCompare(b.data));
+  const perm  = S.turni.filter(t=>t.persona===pid && t.tipo==="PR" && daIso(t.data).getFullYear()===anno)
+                       .sort((a,b)=>a.data.localeCompare(b.data));
+  const orePerm = perm.reduce((s,t)=>s+(t.ore||0),0);
+
+  const tile = (k,v,n)=>`<div class="pt-tile"><div class="k">${esc(k)}</div><div class="v">${v}</div><div class="n">${esc(n)}</div></div>`;
+
+  stampa(`Ore ${p.nome} ${anno}`,
+    intestazioneStampa(`Riepilogo ore ${anno}`, `${p.nome}${p.mansione?" · "+p.mansione:""} · contratto ${p.oreSett} ore a settimana`) +
+    `<div class="pt-tiles">
+      ${tile("Settimana in corso", nOre(oreS)+" h", etichettaSett(kOra))}
+      ${tile("Mese in corso", nOre(oreM)+" h", Mese(OGGI.getMonth())+" "+anno)}
+      ${tile("Totale anno", nOre(oreA)+" h", "dal 1 gennaio")}
+      ${tile("Ferie residue", (FERIE_ANNUE-ferie.length)+" gg", ferie.length+" usate su "+FERIE_ANNUE)}
+      ${tile("Permessi usati", nOre(orePerm)+" h", "su "+PERMESSI_ANNUI+" h l'anno")}
+    </div>
+
+    <div class="pt-h">Ultime otto settimane</div>
+    <table class="pt-tab">
+      <thead><tr><th>Settimana</th><th class="num">Ore</th><th class="num">Scarto sul contratto</th></tr></thead>
+      <tbody>${sett.map(x=>{
+        const d = x.ore - p.oreSett;
+        return `<tr><td>${etichettaSett(x.k)}</td><td class="num">${nOre(x.ore)}</td>
+          <td class="num">${d>0?"+":""}${nOre(d)}</td></tr>`;
+      }).join("")}</tbody>
+    </table>
+
+    <div class="pt-h">Mese per mese</div>
+    <table class="pt-tab">
+      <thead><tr><th>Mese</th><th class="num">Ore</th><th class="num">Scarto su ${nOre(attese)} h teoriche</th></tr></thead>
+      <tbody>${mesi.map(x=>{
+        const d = x.ore - attese;
+        return `<tr><td>${Mese(x.m)}</td><td class="num">${nOre(x.ore)}</td>
+          <td class="num">${d>0?"+":""}${nOre(d)}</td></tr>`;
+      }).join("")}</tbody>
+      <tfoot><tr><th>Totale ${anno}</th><th class="num">${nOre(oreA)}</th><th class="num"></th></tr></tfoot>
+    </table>
+
+    <div class="pt-h">Ferie</div>
+    <table class="pt-tab">
+      <thead><tr><th>Giorno</th><th class="num">Conteggio</th></tr></thead>
+      <tbody>${ferie.length
+        ? ferie.map((t,i)=>`<tr><td>${dataLunga(t.data)}</td><td class="num">${i+1}° giorno</td></tr>`).join("")
+        : `<tr><td colspan="2">Nessun giorno di ferie registrato nel ${anno}.</td></tr>`}</tbody>
+      <tfoot><tr><th>Usate ${ferie.length} su ${FERIE_ANNUE}</th><th class="num">residue ${FERIE_ANNUE-ferie.length}</th></tr></tfoot>
+    </table>
+
+    <div class="pt-h">Permessi</div>
+    <table class="pt-tab">
+      <thead><tr><th>Giorno</th><th>Nota</th><th class="num">Ore</th></tr></thead>
+      <tbody>${perm.length
+        ? perm.map(t=>`<tr><td>${dataLunga(t.data)}</td><td>${esc(t.nota||"—")}</td><td class="num">${nOre(t.ore||0)}</td></tr>`).join("")
+        : `<tr><td colspan="3">Nessun permesso registrato nel ${anno}.</td></tr>`}</tbody>
+      <tfoot><tr><th colspan="2">Totale usato nel ${anno}, su ${PERMESSI_ANNUI} h l'anno</th><th class="num">${nOre(orePerm)}</th></tr></tfoot>
+    </table>
+    <p class="pt-nota">Ore effettivamente a turno, al netto della pausa. Ferie, permessi e riposi non contano come ore lavorate.</p>`);
+}
+
+function stampaTeam(k){
+  const gg = giorniSett(k), gente = personeSett(k);
+  const righe = gente.map(p=>{
+    const celle = gg.map(d=>{
+      const t = turnoIn(p.id,d);
+      if(!t) return `<td>—</td>`;
+      const T = TIPI[t.tipo], o = orarioTurno(t), pa = testoPausa(t);
+      return `<td>${esc(T.nome)}${o?`<br>${o}`:""}${pa?`<br>${pa}`:""}</td>`;
+    }).join("");
+    return `<tr><td><strong>${esc(p.nome)}</strong>${p.mansione?`<br>${esc(p.mansione)}`:""}</td>${celle}
+      <td class="num">${nOre(oreSett(p.id,k))}</td></tr>`;
+  }).join("");
+  const st = statoSett(k);
+  stampa(`Turni team ${k}`,
+    intestazioneStampa(`Turni del team · settimana ${etichettaSett(k)}`,
+      `Settimana ${st==="pubblicata"?"pubblicata":(st==="in_revisione"?"in revisione, non definitiva":"in bozza, non definitiva")}`) +
+    `<table class="pt-tab">
+      <thead><tr><th>Persona</th>${gg.map(d=>`<th>${GIORNI_B[(daIso(d).getDay()+6)%7]} ${daIso(d).getDate()}</th>`).join("")}<th class="num">Ore</th></tr></thead>
+      <tbody>${righe}</tbody>
+    </table>
+    <p class="pt-nota">Le ore sono al netto della pausa.</p>`);
+}
+
 function azione(el){
   const a = el.dataset.az;
   switch(a){
@@ -1711,6 +2092,10 @@ function azione(el){
     case "nuovo-cambio": modCambio(); break;
     case "nuove-ferie": modFerie(); break;
     case "nuovo-permesso": modPermesso(); break;
+    case "ics": modCalendario(); break;
+    case "pdf-settimana": stampaSettimana(); break;
+    case "pdf-ore": stampaOre(); break;
+    case "pdf-team": stampaTeam(settCorrente); break;
     case "approva": modDecidi(el.dataset.id, true); break;
     case "rifiuta": modDecidi(el.dataset.id, false); break;
     case "mansione": modMansione(el.dataset.p); break;
@@ -1804,4 +2189,11 @@ try{
 render();
 </script>
 
+<script>
+if("serviceWorker" in navigator){
+  window.addEventListener("load", function(){
+    navigator.serviceWorker.register("sw.js").catch(function(){});
+  });
+}
+</script>
 </body></html>
